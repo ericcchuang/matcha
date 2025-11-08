@@ -10,7 +10,7 @@ function Gacha() {
   const [pulledCard, setPulledCard] = useState(0);
   const [cardImageURL, setCardImageURL] = useState();
   const [currency, setCurrency] = useLocalStorage("currency");
-  const [cardJson, setCards] = useLocalStorage("cards");
+  const [cardJson] = useLocalStorage("cards");
   const cards = JSON.parse(cardJson) ?? {};
 
   function pullGacha() {

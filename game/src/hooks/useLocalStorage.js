@@ -7,9 +7,9 @@ export default function useLocalStorage(key) {
         callback();
       }
     };
-    window.addEventListener("storage", subscribe);
+    window.addEventListener("storage", handleChange);
     return () => {
-      window.removeEventListener("storage", subscribe);
+      window.removeEventListener("storage", handleChange);
     };
   };
 

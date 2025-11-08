@@ -10,7 +10,7 @@ import Gacha from "./pages/Gacha";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [currency, setCurrency] = useLocalStorage("currency");
+  const [currency] = useLocalStorage("currency");
   return (
     <div className="App">
       <div className="App-header">
@@ -44,8 +44,16 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/game" element={<Game />} />
-        <Route path="/gacha" element={<Gacha />} />
+        <Route
+          path="/game"
+          element={<Game /* currency={currency} setCurrency={setCurrency} */ />}
+        />
+        <Route
+          path="/gacha"
+          element={
+            <Gacha /* currency={currency} setCurrency={setCurrency} */ />
+          }
+        />
       </Routes>
     </div>
   );

@@ -18,7 +18,7 @@ function Game() {
     initialTime: 30,
     timerType: "DECREMENTAL",
   });
-  const [currency, setCurrency] = useLocalStorage("currency");
+  const [, setCurrency] = useLocalStorage("currency");
 
   function initGame() {
     start();
