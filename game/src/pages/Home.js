@@ -13,9 +13,9 @@ function Home() {
           {"$\\f\\relax{x} = x$ is rendered using macros"}
         </Latex>
       </button>
-      <button className="Card">
-        Gacha
-      </button>
+      <div className="Card">
+        <Link to="/Gacha">Gacha</Link>
+      </div>
     </div>
   );
 }
