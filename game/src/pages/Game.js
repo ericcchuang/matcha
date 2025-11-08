@@ -27,7 +27,6 @@ function Game() {
   }
 
   async function getMathProblems() {
-    setCurrency(20);
     try {
       const response = await fetch(`http://localhost:8000/generateProblems`, {
         method: "GET",
