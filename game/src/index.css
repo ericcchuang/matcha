@@ -17,6 +17,15 @@ code {
     monospace;
 }
 
+button {
+  all: unset;             /* wipes ALL default browser styles */
+  transition: transform .2s; /* Animation */
+}
+
+button:hover {
+  transform: scale(.975); /* 2.5% zoom in */
+}
+
 .Container {
   display: flex;
   flex-direction: row;

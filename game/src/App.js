@@ -35,9 +35,9 @@ function App() {
             CARDS
             <img src={"../assets/icons/cards.PNG"} />
           </button>
-          <div className="App-header-options-img">
+          <button className="App-header-options-img">
             <img src={"../assets/icons/settings.PNG"} />
-          </div>
+          </button>
         </div>
       </div>
       <Routes>
