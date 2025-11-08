@@ -8,13 +8,13 @@ function Game() {
 
   async function getMathProblem() {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/generateProblems`, {
+      const response = await fetch(`http://localhost:8000/generateProblems`, {
         method: "GET",
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
+      console.log(data);
       if (response.ok) {
-        setProblem(JSON.stringify(data));
+        setProblem(data);
       }
     } catch (error) {
       console.log("error!!!!!!", error);
@@ -23,10 +23,16 @@ function Game() {
 
   return (
     <div>
-      <form onSubmit={getMathProblem}>
-        <button type="submit">Play</button>
-        <p>{problem ?? ""}</p>
-      </form>
+      <button onClick={getMathProblem}>Play</button>
+      <div>
+        {problem ? (
+          Object.values(problem).map((item) => (
+            <p key={item.problem}>{item.problem}</p>
+          ))
+        ) : (
+          <p>Click Play to get a problem</p>
+        )}
+      </div>
     </div>
   );
 }
