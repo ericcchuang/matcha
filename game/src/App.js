@@ -22,19 +22,19 @@ function App() {
           <div className="App-header-stat-img">
             <img src={"../assets/icons/matcha-currency.PNG"} />
           </div>
-          Currency
+          0000000000 (Currency)
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">
             <img src={"../assets/icons/matcha-logo.PNG"} />
           </div>
-          Meow
+          000 (Level)
         </div>
         <div className="App-header-options">
-          <div className="App-header-options-img">
-
-            <img src={"../assets/icons/settings.PNG"} />
-          </div>
+          <button className="App-header-options-button">
+            CARDS
+            <img src={"../assets/icons/cards.PNG"} />
+          </button>
           <div className="App-header-options-img">
             <img src={"../assets/icons/settings.PNG"} />
           </div>

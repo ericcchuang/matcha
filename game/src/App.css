@@ -60,11 +60,32 @@
 .App-header-options {
   display: flex;
   flex-direction: row;
-  gap: 1em;
+  gap: 2em;
 }
 
 .App-header-options-img img {
   max-width: 3em;
+  margin-top: .375em;
+}
+
+.App-header-options-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 0.625em 0.75em 0.5em 0.75em;
+  background-color: #ffd9ab90;
+  border: 2.5px solid #c68d79;
+  border-radius: 0.5em;
+  text-align: left;
+  font-size: 2em;
+  gap: 0.75em;
+  height: 2em;
+  font-weight: bold;
+}
+
+.App-header-options-button img {
+  max-width: 1em;
 }
 
 .App-link {

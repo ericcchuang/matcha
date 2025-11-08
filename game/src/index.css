@@ -1,10 +1,13 @@
 #root, html, body {
   height: 94.5%;
   margin: 1em;
-  font-family: "Times New Roman", Times, serif;
   background-color: #f5e7d8;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
+}
+
+html * {
+  font-family: "Times New Roman", Times, serif;
 }
 
 code {
