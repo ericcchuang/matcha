@@ -12,10 +12,17 @@ function Game() {
   const [prevCorrectWrong, setPrevCorrectWrong] = useState(true);
   const currentProblem = problemList[currentIndex];
   const [score, setScore] = useState(0);
+  const [extraTime, setExtraTime] = useState(10);
   const { time, start, pause, reset, status, advanceTime } = useTimer({
     initialTime: 30,
     timerType: "DECREMENTAL",
   });
+
+  function initGame() {
+    start();
+    setExtraTime(10);
+    setScore(0);
+  }
 
   async function getMathProblems() {
     try {
@@ -26,7 +33,7 @@ function Game() {
       console.log(data);
       if (response.ok) {
         setProblemList(Object.values(data));
-        start();
+        initGame();
       }
     } catch (error) {
       console.log("error!!!!!!", error);
@@ -40,7 +47,10 @@ function Game() {
     if (answer == currentProblem.answer) {
       setPrevCorrectWrong("Correct!");
       setScore(score + 1);
-      advanceTime(-10);
+      advanceTime(-extraTime);
+      if (extraTime > 2) {
+        setExtraTime(extraTime - 1);
+      }
     } else {
       setPrevCorrectWrong(`Wrong! The answer was ${currentProblem.answer}.`);
     }
