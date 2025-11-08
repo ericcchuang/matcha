@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import Latex from "react-latex-next";
 import "../index.css";
 import { Link } from "react-router-dom";
+import { useTimer } from "use-timer";
 
 function Game() {
   const [problemList, setProblemList] = useState([]);
@@ -11,6 +12,17 @@ function Game() {
   const [prevCorrectWrong, setPrevCorrectWrong] = useState(true);
   const currentProblem = problemList[currentIndex];
   const [score, setScore] = useState(0);
+  const [extraTime, setExtraTime] = useState(10);
+  const { time, start, pause, reset, status, advanceTime } = useTimer({
+    initialTime: 30,
+    timerType: "DECREMENTAL",
+  });
+
+  function initGame() {
+    start();
+    setExtraTime(10);
+    setScore(0);
+  }
 
   async function getMathProblems() {
     try {
@@ -21,6 +33,7 @@ function Game() {
       console.log(data);
       if (response.ok) {
         setProblemList(Object.values(data));
+        initGame();
       }
     } catch (error) {
       console.log("error!!!!!!", error);
@@ -31,9 +44,13 @@ function Game() {
     if (problemList.length === 0) return;
     const answer = document.getElementById("answer").value;
     document.getElementById("answer").value = "";
-    if (answer === currentProblem.answer) {
+    if (answer == currentProblem.answer) {
       setPrevCorrectWrong("Correct!");
       setScore(score + 1);
+      advanceTime(-extraTime);
+      if (extraTime > 2) {
+        setExtraTime(extraTime - 1);
+      }
     } else {
       setPrevCorrectWrong(`Wrong! The answer was ${currentProblem.answer}.`);
     }
@@ -44,24 +61,33 @@ function Game() {
 
   return (
     <div>
-      <button onClick={getMathProblems}>Generate Problems</button>
       <div>
-        {currentProblem ? (
-          <p>
+        {!currentProblem && time > 0 ? (
+          <div>
+            <p>Click "Generate Problems" to start</p>
+            <button onClick={getMathProblems}>Generate Problems</button>
+          </div>
+        ) : (
+          ""
+        )}
+        {currentProblem && time > 0 ? (
+          <div>
             {currentProblem.problem} =
             <label>
               <input name="answer" id="answer" />
             </label>
-          </p>
+            <button onClick={handleNext} disabled={problemList.length === 0}>
+              Submit
+            </button>
+            <p>{prevCorrectWrong}</p>
+            <p>Score: {score}</p>
+            <p>Time: {time}</p>
+          </div>
         ) : (
-          <p>Click "Generate Problems" to start</p>
+          ""
         )}
-        {prevCorrectWrong}
+        {time < 1 ? <div>Game over!! You scored {score}.</div> : ""}
       </div>
-      <button onClick={handleNext} disabled={problemList.length === 0}>
-        Submit
-      </button>
-      <p>Score: {score}</p>
       <p>
         <Link to="/">Home</Link>
       </p>
