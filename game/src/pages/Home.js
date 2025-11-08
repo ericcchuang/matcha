@@ -6,18 +6,16 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div>
-      <p>
+    <div className="Container">
+      <div className="Card">
         <Link to="/Game">PLAY!!!</Link>
-      </p>
-      <p>
-        <Link to="/Gacha">GACHA</Link>
-      </p>
-      <p>
         <Latex macros={{ "\\f": "#1f(#2)" }}>
           {"$\\f\\relax{x} = x$ is rendered using macros"}
         </Latex>
-      </p>
+      </div>
+      <div className="Card">
+        Gacha
+      </div>
     </div>
   );
 }

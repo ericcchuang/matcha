@@ -1,5 +1,8 @@
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -14,14 +17,53 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 1.75em;
+}
+
+.App-header-logo {
+  display: flex;
+  flex-direction: row;
+  font-size: 3.5em;
+  gap: 0.25em;
+  align-content: center;
+  text-shadow: 0px 5px 5px white;
+}
+
+.App-header-logo-img img {
+  max-width: 1.25em;
+  padding-top: 0.125em;
+}
+
+.App-header-stat {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.625em 0.75em 0.5em 0.75em;
+  background-color: #ffd9ab90;
+  outline: 2.5px solid #c68d79;
+  border-radius: 1em;
+  text-align: left;
+  font-size: 1.25em;
+  gap: 0.5em;
+}
+
+.App-header-stat-img img {
+  max-width: 1.5em;
+}
+
+.App-header-options {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.App-header-options-img img {
+  max-width: 3em;
 }
 
 .App-link {
