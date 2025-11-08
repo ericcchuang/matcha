@@ -6,6 +6,8 @@ import "../index.css";
 import { Link } from "react-router-dom";
 import { useTimer } from "use-timer";
 import useLocalStorage from "../hooks/useLocalStorage";
+import filler from "./filler_data.json";
+import cardmap from "../cardmap.json";
 
 function Game() {
   const [problemList, setProblemList] = useState([]);
@@ -18,7 +20,8 @@ function Game() {
     initialTime: 30,
     timerType: "DECREMENTAL",
   });
-  const [, setCurrency] = useLocalStorage("currency");
+  const [currency, setCurrency] = useLocalStorage("currency");
+  const [cards, setCards] = useLocalStorage("cards");
 
   function initGame() {
     start();
@@ -28,15 +31,15 @@ function Game() {
 
   async function getMathProblems() {
     try {
-      const response = await fetch(`http://localhost:8000/generateProblems`, {
-        method: "GET",
-      });
-      const data = await response.json();
-      console.log(data);
-      if (response.ok) {
-        setProblemList(Object.values(data));
-        initGame();
-      }
+      //const response = await fetch(`http://localhost:8000/generateProblems`, {
+      //  method: "GET",
+      //});
+      //const data = await response.json();
+      const data = filler;
+      //if (response.ok) {
+      setProblemList(Object.values(data));
+      initGame();
+      //}
     } catch (error) {
       console.log("error!!!!!!", error);
     }
@@ -49,6 +52,7 @@ function Game() {
     if (answer == currentProblem.answer) {
       setPrevCorrectWrong("Correct!");
       setScore(score + 1);
+      setCurrency(Number(currency) + 1);
       advanceTime(-extraTime);
       if (extraTime > 2) {
         setExtraTime(extraTime - 1);
@@ -61,13 +65,55 @@ function Game() {
     });
   }
 
+  function ItemCard({ id, isSelected, onCardClick }) {
+    const imageUrl = cards[id] > 0 ? cardmap[id] : cardmap[12];
+    const cardStyle = {
+      border: isSelected ? "5px solid green" : "5px solid #ccc",
+    };
+    return (
+      <img
+        src={imageUrl}
+        className="gameplayCard"
+        style={cardStyle}
+        alt={`Card ${id}`}
+        onClick={onCardClick}
+      />
+    );
+  }
+
+  const [selectedIds, setSelectedIds] = useState([]);
+
+  const handleCardClick = (id) => {
+    setSelectedIds((prevIds) => {
+      if (prevIds.includes(id)) {
+        return prevIds.filter((currentId) => currentId !== id);
+      }
+      return [...prevIds, id];
+    });
+  };
+
   return (
     <div>
       <div>
         {!currentProblem && time > 0 ? (
           <div>
-            <p>Click "Generate Problems" to start</p>
-            <button onClick={getMathProblems}>Generate Problems</button>
+            <p>Select Cards</p>
+            {Object.entries(cardmap).map(([key]) => {
+              // Check if this card's ID is in the state array
+              const isSelected = selectedIds.includes(key);
+
+              // Render the ItemCard, passing the props it needs
+              return (
+                <ItemCard
+                  key={key}
+                  id={key}
+                  isSelected={isSelected}
+                  onCardClick={() => handleCardClick(key)}
+                />
+              );
+            })}
+            <p>Click "Start Game" to start!</p>
+            <button onClick={getMathProblems}>Start Game</button>
           </div>
         ) : (
           ""
@@ -88,7 +134,13 @@ function Game() {
         ) : (
           ""
         )}
-        {time < 1 ? <div>Game over!! You scored {score}.</div> : ""}
+        {time < 1 ? (
+          <div>
+            Game over!! You scored {score}. You earned {score} currency.
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <p>
         <Link to="/">Home</Link>
