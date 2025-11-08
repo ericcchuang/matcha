@@ -29,6 +29,14 @@ function App() {
           </div>
           Meow
         </div>
+        <div className="App-header-options">
+          <div className="App-header-options-img">
+            <img src={"../assets/settings.PNG"} />
+          </div>
+          <div className="App-header-options-img">
+            <img src={"../assets/settings.PNG"} />
+          </div>
+        </div>
       </div>
       <Routes>
         <Route path="/" element={<Home />} />

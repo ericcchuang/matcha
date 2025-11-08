@@ -2,6 +2,7 @@
   height: 94.5%;
   margin: 1em;
   font-family: "Times New Roman", Times, serif;
+  background-color: #f5e7d8;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
@@ -21,7 +22,8 @@ code {
 .Card {
   flex: 1 1 auto;
   width: 50em;
-  background-color: aquamarine;
+  background-color: #97da7b;
+  outline: 5px solid #00c27a;
   border-radius: 2em;
   height: 100%;
   align-content: center;
