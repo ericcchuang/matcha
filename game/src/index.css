@@ -1,11 +1,29 @@
-body {
-  margin: 0;
+#root, html, body {
+  height: 94.5%;
+  margin: 1em;
   font-family: "Times New Roman", Times, serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  gap: 5em;
+}
+
+.Card {
+  flex: 1 1 auto;
+  width: 50em;
+  background-color: aquamarine;
+  border-radius: 2em;
+  height: 100%;
+  align-content: center;
+  font-size: 5em;
 }

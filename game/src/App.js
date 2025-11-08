@@ -13,13 +13,20 @@ function App() {
       <div className="App-header">
         <div className="App-header-logo">
           MATCHA
-          <img src={"../assets/matcha-currency.PNG"} />
+          <div className="App-header-logo-img">
+            <img src={"../assets/matcha-currency.PNG"} />
+          </div>
         </div>
         <div className="App-header-stat">
-          <img src={"../assets/matcha-currency.PNG"} />
+          <div className="App-header-stat-img">
+            <img src={"../assets/matcha-currency.PNG"} />
+          </div>
           Currency
         </div>
         <div className="App-header-stat">
+          <div className="App-header-stat-img">
+            <img src={"../assets/matcha-currency.PNG"} />
+          </div>
           Meow
         </div>
       </div>
