@@ -17,28 +17,28 @@ function App() {
         <div className="App-header-logo">
           MATCHA
           <div className="App-header-logo-img">
-            <img src={"../assets/icons/matcha-logo.PNG"} />
+            <img src={"assets/icons/matcha-logo.png"} />
           </div>
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">
-            <img src={"../assets/icons/matcha-currency.PNG"} />
+            <img src={"assets/icons/matcha-currency.png"} />
           </div>
           {currency} (Currency)
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">
-            <img src={"../assets/icons/matcha-logo.PNG"} />
+            <img src={"assets/icons/matcha-logo.png"} />
           </div>
           000 (Level)
         </div>
         <div className="App-header-options">
           <button className="App-header-options-button">
             CARDS
-            <img src={"../assets/icons/cards.PNG"} />
+            <img src={"assets/icons/cards.png"} />
           </button>
           <button className="App-header-options-img">
-            <img src={"../assets/icons/settings.PNG"} />
+            <img src={"assets/icons/settings.png"} />
           </button>
         </div>
       </div>

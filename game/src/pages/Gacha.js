@@ -54,7 +54,7 @@ function Gacha() {
         setCardImageURL("../assets/cards/uncommon/minus.png");
         break;
       default:
-        setCardImageURL("../assets/icons/math.PNG");
+        setCardImageURL("../assets/icons/math.png");
     }
     // we don't have to use the cards setter because state will be updated by the currency setter
     if (pulledCard in cards) {
