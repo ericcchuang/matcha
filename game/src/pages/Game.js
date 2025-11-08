@@ -76,7 +76,7 @@ function Game() {
         ) : (
           ""
         )}
-        {time < 1 ? <div>Game over!!</div> : ""}
+        {time < 1 ? <div>Game over!! You scored {score}.</div> : ""}
       </div>
       <p>
         <Link to="/">Home</Link>
