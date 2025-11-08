@@ -1,12 +1,15 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, TextInput } from "react";
 import ReactDOM from "react-dom/client";
+import Latex from "react-latex-next";
 import "../index.css";
 
 function Game() {
-  const [problem, setProblem] = useState("test");
+  const [problemList, setProblemList] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevCorrectWrong, setPrevCorrectWrong] = useState(true);
 
-  async function getMathProblem() {
+  async function getMathProblems() {
     try {
       const response = await fetch(`http://localhost:8000/generateProblems`, {
         method: "GET",
@@ -14,25 +17,44 @@ function Game() {
       const data = await response.json();
       console.log(data);
       if (response.ok) {
-        setProblem(data);
+        setProblemList(Object.values(data));
       }
     } catch (error) {
       console.log("error!!!!!!", error);
     }
   }
 
+  function handleNext() {
+    if (problemList.length === 0) return;
+    const answer = document.getElementById("answer").value;
+    document.getElementById("answer").value = "";
+    setPrevCorrectWrong(answer == currentProblem.answer);
+    setCurrentIndex((prevIndex) => {
+      return (prevIndex + 1) % problemList.length;
+    });
+  }
+
+  const currentProblem = problemList[currentIndex];
+
   return (
     <div>
-      <button onClick={getMathProblem}>Play</button>
+      <button onClick={getMathProblems}>Generate Problems</button>
       <div>
-        {problem ? (
-          Object.values(problem).map((item) => (
-            <p key={item.problem}>{item.problem}</p>
-          ))
+        {currentProblem ? (
+          <p>
+            {currentProblem.problem} =
+            <label>
+              <input name="answer" id="answer" />
+            </label>
+          </p>
         ) : (
-          <p>Click Play to get a problem</p>
+          <p>Click "Generate Problems" to start</p>
         )}
+        {prevCorrectWrong ? <p>Correct!</p> : <p>Wrong!</p>}
       </div>
+      <button onClick={handleNext} disabled={problemList.length === 0}>
+        Submit
+      </button>
     </div>
   );
 }
