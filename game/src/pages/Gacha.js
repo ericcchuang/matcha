@@ -19,7 +19,7 @@ function Gacha() {
   if (error) return <span>Error loading data</span>;
 
   function pullGacha() {
-    setPulledCard(Math.floor(Math.random() * 12));
+    setPulledCard(Math.floor(Math.random() * cardData.length));
     console.log(pulledCard);
     let card = cardData[pulledCard];
     setCardImageURL(`/assets/cards/${card["rarity"]}/${card["name"]}.png`);
