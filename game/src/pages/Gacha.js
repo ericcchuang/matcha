@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import "../index.css";
 
@@ -53,8 +54,13 @@ function Gacha() {
 
   return (
     <div>
+      <p>
+        <Link to="/">Home</Link>
+      </p>
       <button onClick={pullGacha}>Pull!</button>
-      <p>{cardImageURL ? <img src={cardImageURL} /> : ""}</p>
+      <p>
+        {cardImageURL ? <img src={cardImageURL} className="playingCard" /> : ""}
+      </p>
     </div>
   );
 }
