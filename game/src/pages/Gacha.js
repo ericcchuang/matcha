@@ -57,9 +57,12 @@ function Gacha() {
       <p>
         <Link to="/">Home</Link>
       </p>
-      <button onClick={pullGacha}>Pull!</button>
       <p>
-        {cardImageURL ? <img src={cardImageURL} className="playingCard" /> : ""}
+        {cardImageURL ? (
+          <img src={cardImageURL} className="playingCard" />
+        ) : (
+          <button onClick={pullGacha}>Pull!</button>
+        )}
       </p>
     </div>
   );
