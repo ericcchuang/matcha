@@ -92,16 +92,17 @@
 }
 
 .App-popup {
-  display: block;
   position: absolute;
-  z-index: 1;
+  z-index: 10;
   height: 60%;
   width: 80%;
   background-color: #c68d79EE;
   border: 5px solid #c68d79;
   border-radius: 4em;
-  align-self: anchor-center;
-  justify-self: anchor-center;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes App-logo-spin {
