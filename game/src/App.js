@@ -9,6 +9,13 @@ import Home from "./pages/Home";
 import Gacha from "./pages/Gacha";
 
 function App() {
+  function toggle (id) {
+    var element = document.getElementById(id);
+    if (element.style.display === "none") {
+      element.style.display = "block";
+    } else { element.style.display = "none"; }
+  }
+
   return (
     <div className="App">
       <div className="App-header">
@@ -31,13 +38,16 @@ function App() {
           000 (Level)
         </div>
         <div className="App-header-options">
-          <button className="App-header-options-button">
+          <button onClick={toggle("cards")} className="App-header-options-button">
             CARDS
             <img src={"../assets/icons/cards.PNG"} />
           </button>
           <button className="App-header-options-img">
             <img src={"../assets/icons/settings.PNG"} />
           </button>
+          <div className="App-popup" id="cards">
+            <h1>Hello World!</h1>
+          </div>
         </div>
       </div>
       <Routes>

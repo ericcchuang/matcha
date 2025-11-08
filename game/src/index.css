@@ -26,6 +26,10 @@ button:hover {
   transform: scale(.975); /* 2.5% zoom in */
 }
 
+h1 {
+  font-size: 5em;
+}
+
 .Container {
   display: flex;
   flex-direction: row;
@@ -38,10 +42,9 @@ button:hover {
   width: 50em;
   background-color: #97da7b;
   border: 5px solid #00c27a;
-  border-radius: 2em;
+  border-radius: 5em;
   height: 100%;
   align-content: center;
-  font-size: 5em;
 }
 
 .playingCard {

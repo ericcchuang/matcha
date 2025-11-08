@@ -8,13 +8,13 @@ function Home() {
   return (
     <div className="Container">
       <button className="Card">
-        <Link to="/Game">PLAY!!!</Link>
+        <h1><Link to="/Game">PLAY!!!</Link></h1>
         <Latex macros={{ "\\f": "#1f(#2)" }}>
           {"$\\f\\relax{x} = x$ is rendered using macros"}
         </Latex>
       </button>
       <button className="Card">
-        <Link to="/Gacha">Gacha</Link>
+        <h1><Link to="/Gacha">Gacha</Link></h1>
       </button>
     </div>
   );
