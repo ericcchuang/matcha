@@ -13,11 +13,10 @@ function Gacha() {
   const [currency, setCurrency] = useLocalStorage("currency");
   const [localCardJson] = useLocalStorage("cards");
   const cards = JSON.parse(localCardJson) ?? {};
-  const { data, isPending, error } = useCards();
+  const { data: cardData, isPending, error } = useCards();
 
   if (isPending) return <span>Loading...</span>;
   if (error) return <span>Error loading data</span>;
-  const cardData = data["cards"];
 
   function pullGacha() {
     setPulledCard(Math.floor(Math.random() * 12));
