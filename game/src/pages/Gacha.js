@@ -14,40 +14,40 @@ function Gacha() {
     console.log(pulledCard);
     switch (pulledCard) {
       case 0:
-        setCardImageURL("/cards/common/zero.png");
+        setCardImageURL("../assets/cards/common/zero.png");
         break;
       case 1:
-        setCardImageURL("/cards/common/one.png");
+        setCardImageURL("../assets/cards/common/one.png");
         break;
       case 2:
-        setCardImageURL("/cards/common/two.png");
+        setCardImageURL("../assets/cards/common/two.png");
         break;
       case 3:
-        setCardImageURL("/cards/common/three.png");
+        setCardImageURL("../assets/cards/common/three.png");
         break;
       case 4:
-        setCardImageURL("/cards/common/four.png");
+        setCardImageURL("../assets/cards/common/four.png");
         break;
       case 5:
-        setCardImageURL("/cards/common/five.png");
+        setCardImageURL("../assets/cards/common/five.png");
         break;
       case 6:
-        setCardImageURL("/cards/common/six.png");
+        setCardImageURL("../assets/cards/common/six.png");
         break;
       case 7:
-        setCardImageURL("/cards/common/seven.png");
+        setCardImageURL("../assets/cards/common/seven.png");
         break;
       case 8:
-        setCardImageURL("/cards/common/eight.png");
+        setCardImageURL("../assets/cards/common/eight.png");
         break;
       case 9:
-        setCardImageURL("/cards/common/nine.png");
+        setCardImageURL("../assets/cards/common/nine.png");
         break;
       case 10:
-        setCardImageURL("/cards/uncommon/plus.png");
+        setCardImageURL("../assets/cards/uncommon/plus.png");
         break;
       case 11:
-        setCardImageURL("/cards/uncommon/minus.png");
+        setCardImageURL("../assets/cards/uncommon/minus.png");
         break;
     }
   }
