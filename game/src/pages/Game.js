@@ -5,6 +5,7 @@ import Latex from "react-latex-next";
 import "../index.css";
 import { Link } from "react-router-dom";
 import { useTimer } from "use-timer";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 function Game() {
   const [problemList, setProblemList] = useState([]);
@@ -17,6 +18,7 @@ function Game() {
     initialTime: 30,
     timerType: "DECREMENTAL",
   });
+  const [currency, setCurrency] = useLocalStorage("currency");
 
   function initGame() {
     start();
@@ -25,6 +27,7 @@ function Game() {
   }
 
   async function getMathProblems() {
+    setCurrency(20);
     try {
       const response = await fetch(`http://localhost:8000/generateProblems`, {
         method: "GET",

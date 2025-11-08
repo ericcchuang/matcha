@@ -7,8 +7,10 @@ import React from "react";
 import Game from "./pages/Game";
 import Home from "./pages/Home";
 import Gacha from "./pages/Gacha";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
+  const [currency, setCurrency] = useLocalStorage("currency");
   return (
     <div className="App">
       <div className="App-header">
@@ -22,7 +24,7 @@ function App() {
           <div className="App-header-stat-img">
             <img src={"../assets/icons/matcha-currency.PNG"} />
           </div>
-          0000000000 (Currency)
+          {currency} (Currency)
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">

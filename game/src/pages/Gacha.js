@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "../index.css";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 function Gacha() {
   const [pulledCard, setPulledCard] = useState(0);
   const [cardImageURL, setCardImageURL] = useState();
+  const [currency, setCurrency] = useLocalStorage("currency");
+  const [cardJson, setCards] = useLocalStorage("cards");
+  const cards = JSON.parse(cardJson) ?? {};
 
   function pullGacha() {
     setPulledCard(Math.floor(Math.random() * 12));
@@ -49,6 +53,18 @@ function Gacha() {
       case 11:
         setCardImageURL("../assets/cards/uncommon/minus.png");
         break;
+      default:
+        setCardImageURL("../assets/icons/math.PNG");
+    }
+    // we don't have to use the cards setter because state will be updated by the currency setter
+    if (pulledCard in cards) {
+      cards[pulledCard]++;
+      localStorage.setItem("cards", JSON.stringify(cards));
+      setCurrency(currency - 1);
+    } else {
+      cards[pulledCard] = 1;
+      localStorage.setItem("cards", JSON.stringify(cards));
+      setCurrency(currency - 1);
     }
   }
 
@@ -61,8 +77,11 @@ function Gacha() {
         {cardImageURL ? (
           <img src={cardImageURL} className="playingCard" />
         ) : (
-          <button onClick={pullGacha}>Pull!</button>
+          <div>no card pulled</div>
         )}
+        <button onClick={pullGacha} disabled={currency <= 0 ? true : false}>
+          Pull!
+        </button>
       </p>
     </div>
   );
