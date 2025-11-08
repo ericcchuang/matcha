@@ -7,8 +7,10 @@ import React from "react";
 import Game from "./pages/Game";
 import Home from "./pages/Home";
 import Gacha from "./pages/Gacha";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
+  const [currency] = useLocalStorage("currency");
   function toggle (id) {
     var element = document.getElementById(id);
     if (element.style.display === "none") {
@@ -22,28 +24,28 @@ function App() {
         <div className="App-header-logo">
           MATCHA
           <div className="App-header-logo-img">
-            <img src={"../assets/icons/matcha-logo.PNG"} />
+            <img src={"/assets/icons/matcha-logo.png"} />
           </div>
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">
-            <img src={"../assets/icons/matcha-currency.PNG"} />
+            <img src={"/assets/icons/matcha-currency.png"} />
           </div>
-          0000000000 (Currency)
+          {currency} (Currency)
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">
-            <img src={"../assets/icons/matcha-logo.PNG"} />
+            <img src={"/assets/icons/matcha-logo.png"} />
           </div>
           000 (Level)
         </div>
         <div className="App-header-options">
           <button onClick={toggle("cards")} className="App-header-options-button">
             CARDS
-            <img src={"../assets/icons/cards.PNG"} />
+            <img src={"/assets/icons/cards.png"} />
           </button>
           <button className="App-header-options-img">
-            <img src={"../assets/icons/settings.PNG"} />
+            <img src={"/assets/icons/settings.png"} />
           </button>
           <div className="App-popup" id="cards">
             <h1>Hello World!</h1>
@@ -52,8 +54,16 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/game" element={<Game />} />
-        <Route path="/gacha" element={<Gacha />} />
+        <Route
+          path="/game"
+          element={<Game /* currency={currency} setCurrency={setCurrency} */ />}
+        />
+        <Route
+          path="/gacha"
+          element={
+            <Gacha /* currency={currency} setCurrency={setCurrency} */ />
+          }
+        />
       </Routes>
     </div>
   );
