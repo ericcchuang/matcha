@@ -42,11 +42,14 @@ function App() {
               CARDS
               <img src={"/assets/icons/cards.png"} />
             </button>
-            <button className="App-header-options-img">
+            <button onClick={() => toggle("settings")} className="App-header-options-img">
               <img src={"/assets/icons/settings.png"} />
             </button>
             <div className="App-popup" id="cards" style={{display: "none"}}>
               <h1>Hello World!</h1>
+            </div>
+            <div className="App-popup" id="settings" style={{display: "none"}}>
+              <h1>Settings</h1>
             </div>
           </div>
         </div>
