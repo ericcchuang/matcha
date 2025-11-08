@@ -1,15 +1,29 @@
-#root, html, body {
+#root,
+html,
+body {
   height: 94.5%;
   margin: 1em;
-  font-family: "Times New Roman", Times, serif;
   background-color: #f5e7d8;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
 
+html * {
+  font-family: "Times New Roman", Times, serif;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+button {
+  all: unset;             /* wipes ALL default browser styles */
+  transition: transform .2s; /* Animation */
+}
+
+button:hover {
+  transform: scale(.975); /* 2.5% zoom in */
 }
 
 .Container {
@@ -23,9 +37,14 @@ code {
   flex: 1 1 auto;
   width: 50em;
   background-color: #97da7b;
-  outline: 5px solid #00c27a;
+  border: 5px solid #00c27a;
   border-radius: 2em;
   height: 100%;
   align-content: center;
   font-size: 5em;
+}
+
+.playingCard {
+  max-width: 50%;
+  max-height: 25vw;
 }

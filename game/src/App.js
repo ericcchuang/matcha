@@ -15,28 +15,29 @@ function App() {
         <div className="App-header-logo">
           MATCHA
           <div className="App-header-logo-img">
-            <img src={"../assets/matcha-currency.PNG"} />
+            <img src={"../assets/icons/matcha-logo.PNG"} />
           </div>
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">
-            <img src={"../assets/matcha-currency.PNG"} />
+            <img src={"../assets/icons/matcha-currency.PNG"} />
           </div>
-          Currency
+          0000000000 (Currency)
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">
-            <img src={"../assets/matcha-currency.PNG"} />
+            <img src={"../assets/icons/matcha-logo.PNG"} />
           </div>
-          Meow
+          000 (Level)
         </div>
         <div className="App-header-options">
-          <div className="App-header-options-img">
-            <img src={"../assets/settings.PNG"} />
-          </div>
-          <div className="App-header-options-img">
-            <img src={"../assets/settings.PNG"} />
-          </div>
+          <button className="App-header-options-button">
+            CARDS
+            <img src={"../assets/icons/cards.PNG"} />
+          </button>
+          <button className="App-header-options-img">
+            <img src={"../assets/icons/settings.PNG"} />
+          </button>
         </div>
       </div>
       <Routes>
