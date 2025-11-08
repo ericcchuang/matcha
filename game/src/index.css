@@ -1,4 +1,6 @@
-#root, html, body {
+#root,
+html,
+body {
   height: 94.5%;
   margin: 1em;
   background-color: #f5e7d8;
@@ -11,7 +13,7 @@ html * {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -31,4 +33,9 @@ code {
   height: 100%;
   align-content: center;
   font-size: 5em;
+}
+
+.playingCard {
+  max-width: 50%;
+  max-height: 25vw;
 }
