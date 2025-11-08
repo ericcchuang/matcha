@@ -15,27 +15,28 @@ function App() {
         <div className="App-header-logo">
           MATCHA
           <div className="App-header-logo-img">
-            <img src={"../assets/matcha-currency.PNG"} />
+            <img src={"../assets/icons/matcha-logo.PNG"} />
           </div>
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">
-            <img src={"../assets/matcha-currency.PNG"} />
+            <img src={"../assets/icons/matcha-currency.PNG"} />
           </div>
           Currency
         </div>
         <div className="App-header-stat">
           <div className="App-header-stat-img">
-            <img src={"../assets/matcha-currency.PNG"} />
+            <img src={"../assets/icons/matcha-logo.PNG"} />
           </div>
           Meow
         </div>
         <div className="App-header-options">
           <div className="App-header-options-img">
-            <img src={"../assets/settings.PNG"} />
+
+            <img src={"../assets/icons/settings.PNG"} />
           </div>
           <div className="App-header-options-img">
-            <img src={"../assets/settings.PNG"} />
+            <img src={"../assets/icons/settings.PNG"} />
           </div>
         </div>
       </div>

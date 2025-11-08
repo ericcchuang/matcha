@@ -23,7 +23,7 @@ code {
   flex: 1 1 auto;
   width: 50em;
   background-color: #97da7b;
-  outline: 5px solid #00c27a;
+  border: 5px solid #00c27a;
   border-radius: 2em;
   height: 100%;
   align-content: center;

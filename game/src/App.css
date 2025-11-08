@@ -42,10 +42,11 @@
 .App-header-stat {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: 100%;
   padding: 0.625em 0.75em 0.5em 0.75em;
   background-color: #ffd9ab90;
-  outline: 2.5px solid #c68d79;
+  border: 2.5px solid #c68d79;
   border-radius: 1em;
   text-align: left;
   font-size: 1.25em;
@@ -53,7 +54,7 @@
 }
 
 .App-header-stat-img img {
-  max-width: 1.5em;
+  max-height: 1.25em;
 }
 
 .App-header-options {
