@@ -1,13 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Latex from "react-latex-next";
+import ReactDOM from "react-dom/client";
+import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import React from "react";
+
+import Game from "./pages/Game";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
-      <Latex macros={{ "\\f": "#1f(#2)" }}>
-        {"$\\f\\relax{x} = x$ is rendered using macros"}
-      </Latex>{" "}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/game" element={<Game />} />
+      </Routes>
     </div>
   );
 }
