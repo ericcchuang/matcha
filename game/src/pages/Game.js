@@ -9,6 +9,8 @@ function Game() {
   const [problemList, setProblemList] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevCorrectWrong, setPrevCorrectWrong] = useState(true);
+  const currentProblem = problemList[currentIndex];
+  const [score, setScore] = useState(0);
 
   async function getMathProblems() {
     try {
@@ -31,6 +33,7 @@ function Game() {
     document.getElementById("answer").value = "";
     if (answer === currentProblem.answer) {
       setPrevCorrectWrong("Correct!");
+      setScore(score + 1);
     } else {
       setPrevCorrectWrong(`Wrong! The answer was ${currentProblem.answer}.`);
     }
@@ -38,8 +41,6 @@ function Game() {
       return (prevIndex + 1) % problemList.length;
     });
   }
-
-  const currentProblem = problemList[currentIndex];
 
   return (
     <div>
@@ -60,6 +61,7 @@ function Game() {
       <button onClick={handleNext} disabled={problemList.length === 0}>
         Submit
       </button>
+      <p>Score: {score}</p>
       <p>
         <Link to="/">Home</Link>
       </p>
