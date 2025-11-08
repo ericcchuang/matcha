@@ -41,3 +41,8 @@ async def getProblems(input):
         model="claude-sonnet-4-20250514",
     )
     return(response.final_output)
+
+@app.get("/cards")
+async def cards():
+    with open('./cards.json', 'r') as f:
+        return json.load(f)

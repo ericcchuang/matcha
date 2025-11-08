@@ -1,0 +1,64 @@
+{
+  "cards": [
+    {
+      "id": 0,
+      "name": "zero",
+      "rarity": "common"
+    },
+    {
+      "id": 1,
+      "name": "one",
+      "rarity": "common"
+    },
+    {
+      "id": 2,
+      "name": "two",
+      "rarity": "common"
+    },
+    {
+      "id": 3,
+      "name": "three",
+      "rarity": "common"
+    },
+    {
+      "id": 4,
+      "name": "four",
+      "rarity": "common"
+    },
+    {
+      "id": 5,
+      "name": "five",
+      "rarity": "common"
+    },
+    {
+      "id": 6,
+      "name": "six",
+      "rarity": "common"
+    },
+    {
+      "id": 7,
+      "name": "seven",
+      "rarity": "common"
+    },
+    {
+      "id": 8,
+      "name": "eight",
+      "rarity": "common"
+    },
+    {
+      "id": 9,
+      "name": "nine",
+      "rarity": "common"
+    },
+    {
+      "id": 10,
+      "name": "plus",
+      "rarity": "uncommon"
+    },
+    {
+      "id": 11,
+      "name": "minus",
+      "rarity": "uncommon"
+    }
+  ]
+}
