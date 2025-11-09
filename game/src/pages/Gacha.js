@@ -19,7 +19,6 @@ function Gacha() {
 
   function pullGacha() {
     const pullNum = Math.floor(Math.random() * 100);
-    // TODO: implement epic and rare cards
     const rarity =
       pullNum === 0
         ? "epic"

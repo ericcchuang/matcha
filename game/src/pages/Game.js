@@ -9,6 +9,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import filler from "./filler_data.json";
 import useCards from "../hooks/useCards";
 import ItemCard from "../hooks/itemCard";
+import { MathJax } from "better-react-mathjax";
 
 function Game() {
   const [problemList, setProblemList] = useState([]);
@@ -171,7 +172,7 @@ function Game() {
         )}
         {currentProblem && time > 0 ? (
           <div>
-            {currentProblem.problem} =
+            <MathJax>{`\\[ ${currentProblem.problem} = \\]`}</MathJax>
             <label>
               <input name="answer" id="answer" onKeyDown={handleKeyDown} />
             </label>
