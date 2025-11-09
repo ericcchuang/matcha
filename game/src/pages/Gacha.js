@@ -45,19 +45,22 @@ function Gacha() {
   }
 
   return (
-    <div>
+    <div style={{width: "100%", height: "90vh", alignContent: "center", justifyContent: "center"}}>
       <p className="container">
         {cardImageURL ? (
           <img src={cardImageURL} className="playingCard" />
         ) : (
-          <div>no card pulled</div>
+          <div style={{width: "100%", height: "67vh", alignContent: "center", justifyContent: "center"}}>
+            <h1>No cards drawn yet.</h1>
+            <h3>Click the button below to start!</h3>
+          </div>
         )}
         <button
           onClick={pullGacha}
           className="App-button"
           disabled={currency <= 0 ? true : false}
         >
-          Pull! (costs $1)
+          1 Card Draw: $1
         </button>
       </p>
     </div>

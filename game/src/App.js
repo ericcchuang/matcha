@@ -53,12 +53,14 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <a href="/" className="App-header-logo">
-          MATHCHA
-          <div className="App-header-logo-img">
-            <img src={"/assets/icons/matcha-logo.png"} />
-          </div>
-        </a>
+        <button>
+          <a href="/" className="App-header-logo">
+            MATHCHA
+            <div className="App-header-logo-img">
+              <img src={"/assets/icons/matcha-logo.png"} />
+            </div>
+          </a>
+        </button>
         <div className="App-header-stat">
           <p>$ {currency}</p>
           <div className="App-header-stat-img">
@@ -85,9 +87,11 @@ function App() {
           >
             <img src={"/assets/icons/settings.png"} />
           </button>
-          <a href="/" className="App-header-options-img">
-            <img src={"/assets/icons/home.png"} />
-          </a>
+          <button>
+            <a href="/" className="App-header-options-img">
+              <img src={"/assets/icons/home.png"} />
+            </a>
+          </button>
           <div className="App-popup" id="cards" style={{ display: "none" }}>
             <button
               onClick={() => toggle("cards")}
@@ -97,7 +101,7 @@ function App() {
               x
             </button>
             <h1>My Cards</h1>
-            <div className="gridCard">
+            <div className="gridCard" style={{paddingBottom: "5vh"}}>
               {Object.entries(cardData).map(([key]) => {
                 return (
                   <ItemCard
@@ -135,7 +139,7 @@ function App() {
             </button>
             <h1>Settings</h1>
             <button className="App-button" onClick={() => deleteAllData()}>
-              DELETE ALL DATA!!
+              <p style={{color: "black", textShadow: "0px 1px 4px red"}}>DELETE ALL DATA</p>
             </button>
           </div>
         </div>
