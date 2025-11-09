@@ -1,7 +1,6 @@
 import json
-from mangum import Mangum
 
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 from dedalus_labs import AsyncDedalus, DedalusRunner
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,7 +15,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-#load_dotenv()
+load_dotenv()
 
 '''with open("./prompts.json","r") as f:
     prompts = json.load(f)'''
@@ -96,7 +95,7 @@ card_info = [
   }
 ]
 
-@app.get("/api/generateProblems")
+@app.get("/generateProblems")
 async def generateProblems():
     json_string = await getProblems(prompts["arithmetic"]) 
     try:
@@ -116,10 +115,8 @@ async def getProblems(input):
     )
     return(response.final_output)
 
-@app.get("/api/cards")
+@app.get("/cards")
 async def cards():
     '''with open('./cards.json', 'r') as f:
         return json.load(f)'''
     return(card_info)
-    
-handler = Mangum(app)
