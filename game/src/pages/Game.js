@@ -11,6 +11,7 @@ import useCards from "../hooks/useCards";
 import ItemCard from "../hooks/itemCard";
 
 function Game() {
+  const endpoint = process.env.REACT_APP_ENDPOINT;
   const [problemList, setProblemList] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevCorrectWrong, setPrevCorrectWrong] = useState(true);
@@ -43,15 +44,15 @@ function Game() {
 
   async function getMathProblems() {
     try {
-      //const response = await fetch(`http://localhost:8000/generateProblems`, {
-      //  method: "GET",
-      //});
-      //const data = await response.json();
-      const data = filler;
-      //if (response.ok) {
-      setProblemList(Object.values(data));
-      initGame();
-      //}
+      const response = await fetch(`${endpoint}generateProblems`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      //const data = filler;
+      if (response.ok) {
+        setProblemList(Object.values(data));
+        initGame();
+      }
     } catch (error) {
       console.log("error!!!!!!", error);
     }

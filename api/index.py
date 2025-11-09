@@ -38,7 +38,7 @@ async def getProblems(input):
     runner = DedalusRunner(client)
     response = await runner.run(
         input=input,
-        model="claude-sonnet-4-20250514",
+        model="gemini-2.5-flash-lite",
     )
     return(response.final_output)
 
