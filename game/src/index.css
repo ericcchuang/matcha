@@ -32,7 +32,7 @@ a {
 
 h1 {
   font-size: 5em;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 p {
@@ -58,6 +58,17 @@ p {
   align-content: center;
 }
 
+.gridCard {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2vh;
+}
+
 .playingCard {
   max-width: 50%;
   max-height: 25vw;
@@ -70,7 +81,7 @@ p {
 }
 
 .gameplayCard:hover {
-  transform: scale(2);
+  transform: scale(1.125);
   margin-right: 5px;
 }
 

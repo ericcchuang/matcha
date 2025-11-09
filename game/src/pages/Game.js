@@ -91,24 +91,25 @@ function Game() {
       <div>
         {!currentProblem && time > 0 ? (
           <div>
-            <h1>Select Your Cards:</h1>
-            {Object.entries(cardData).map(([key]) => {
-              // Check if this card's ID is in the state array
-              const isSelected = selectedIds.includes(key);
-
-              // Render the ItemCard, passing the props it needs
-              return (
-                <ItemCard
-                  key={key}
-                  card={cardData[key]}
-                  isSelected={isSelected}
-                  onCardClick={() => handleCardClick(key)}
-                  className="gameplayCard"
-                />
-              );
-            })}
-            <br />
+            <h1>Select Your Cards</h1>
             <p>You may only select up to 5 cards. Click "Start Game" to start!</p>
+            <div className="gridCard">
+              {Object.entries(cardData).map(([key]) => {
+                // Check if this card's ID is in the state array
+                const isSelected = selectedIds.includes(key);
+
+                // Render the ItemCard, passing the props it needs
+                return (
+                  <ItemCard
+                    key={key}
+                    card={cardData[key]}
+                    isSelected={isSelected}
+                    onCardClick={() => handleCardClick(key)}
+                    className="gameplayCard"
+                  />
+                );
+              })}
+            </div>
             <button onClick={getMathProblems} className="App-button">
               START!
             </button>
@@ -155,9 +156,6 @@ function Game() {
           ""
         )}
       </div>
-      <p>
-        <Link to="/">Home</Link>
-      </p>
     </div>
   );
 }

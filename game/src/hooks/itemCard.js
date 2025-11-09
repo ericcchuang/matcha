@@ -10,7 +10,7 @@ function ItemCard({ card, isSelected, onCardClick, className }) {
     ? `/assets/cards/${card["rarity"]}/${card["name"]}.png`
     : "/assets/icons/math.png";
   const cardStyle = {
-    border: isSelected ? "5px solid green" : "5px solid #ccc",
+    "border": isSelected ? "5px solid green" : "5px solid #ccc"
   };
   return (
     <img
