@@ -110,6 +110,13 @@
   font-weight: bold;
 }
 
+.App-header-logo:hover,
+.App-header-options-button,
+.App-button:hover,
+.App-button-x:hover {
+  cursor: pointer;
+}
+
 .App-link {
   color: #61dafb;
 }

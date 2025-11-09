@@ -91,7 +91,7 @@ function Game() {
       <div>
         {!currentProblem && time > 0 ? (
           <div>
-            <p>Select Cards. You may only select 5 cards.</p>
+            <h1>Select Your Cards:</h1>
             {Object.entries(cardData).map(([key]) => {
               // Check if this card's ID is in the state array
               const isSelected = selectedIds.includes(key);
@@ -107,8 +107,11 @@ function Game() {
                 />
               );
             })}
-            <p>Click "Start Game" to start!</p>
-            <button onClick={getMathProblems}>Start Game</button>
+            <br />
+            <p>You may only select up to 5 cards. Click "Start Game" to start!</p>
+            <button onClick={getMathProblems} className="App-button">
+              START!
+            </button>
           </div>
         ) : (
           ""
