@@ -96,7 +96,7 @@ card_info = [
   }
 ]
 
-@app.get("/generateProblems")
+@app.get("/api/generateProblems")
 async def generateProblems():
     json_string = await getProblems(prompts["arithmetic"]) 
     try:
@@ -116,7 +116,7 @@ async def getProblems(input):
     )
     return(response.final_output)
 
-@app.get("/cards")
+@app.get("/api/cards")
 async def cards():
     '''with open('./cards.json', 'r') as f:
         return json.load(f)'''
