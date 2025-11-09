@@ -8,13 +8,9 @@ function ItemCard({ card, isSelected, onCardClick, className }) {
   const playerOwnsCard = ownedCards && card["id"] in ownedCards;
   const imageUrl = playerOwnsCard
     ? `/assets/cards/${card["rarity"]}/${card["name"]}.png`
-    : `/assets/cards/${card["rarity"]}/${card["name"]}.png`;
-  const cardStyle = playerOwnsCard ? {
-    outline: isSelected ? "5px solid green" : "none",
-    borderRadius: "4px"
-  } : {
-    outline: isSelected ? "5px solid green" : "none",
-    filter: "grayscale(100%) brightness(75%)"
+    : "/assets/icons/math.png";
+  const cardStyle = {
+    border: isSelected ? "5px solid green" : "5px solid #ccc",
   };
   return (
     <img
