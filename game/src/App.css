@@ -38,7 +38,9 @@
   max-height: 3.5vh;
 }
 
-.App-header-stat, .App-header-options-button, .App-button {
+.App-header-stat,
+.App-header-options-button,
+.App-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -71,7 +73,8 @@
   max-width: 3vh;
 }
 
-.App-header-options-button, .App-button {
+.App-header-options-button,
+.App-button {
   font-size: 2.75vh;
   font-weight: bold;
   gap: 1.5vw;
@@ -112,7 +115,7 @@
   z-index: 10;
   height: 60%;
   width: 80%;
-  background-color: #c68d79EE;
+  background-color: #c68d79ee;
   border: 5px solid #935d51;
   border-radius: 4vh;
 
@@ -128,4 +131,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

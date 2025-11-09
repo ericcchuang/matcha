@@ -46,7 +46,7 @@ function Gacha() {
 
   return (
     <div>
-      <p>
+      <p className="container">
         {cardImageURL ? (
           <img src={cardImageURL} className="playingCard" />
         ) : (
