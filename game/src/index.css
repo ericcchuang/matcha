@@ -49,7 +49,7 @@ p {
 
 .Card {
   flex: 1 1 auto;
-  width: 50em;
+  width: 40vw;
   background-color: #97da7b;
   border: 5px solid #00c27a;
   border-radius: 5em;
