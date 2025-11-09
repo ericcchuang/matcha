@@ -9,20 +9,22 @@ import Home from "./pages/Home";
 import Gacha from "./pages/Gacha";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import toggle from "./hooks/toggle";
 
 function App() {
   const [currency] = useLocalStorage("currency");
   const queryClient = new QueryClient();
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <div className="App-header">
-          <div className="App-header-logo">
+          <a href="/" className="App-header-logo">
             MATCHA
             <div className="App-header-logo-img">
               <img src={"/assets/icons/matcha-logo.png"} />
             </div>
-          </div>
+          </a>
           <div className="App-header-stat">
             <div className="App-header-stat-img">
               <img src={"/assets/icons/matcha-currency.png"} />
@@ -36,13 +38,19 @@ function App() {
             000 (Level)
           </div>
           <div className="App-header-options">
-            <button className="App-header-options-button">
+            <button onClick={() => toggle("cards")} className="App-header-options-button">
               CARDS
               <img src={"/assets/icons/cards.png"} />
             </button>
-            <button className="App-header-options-img">
+            <button onClick={() => toggle("settings")} className="App-header-options-img">
               <img src={"/assets/icons/settings.png"} />
             </button>
+            <div className="App-popup" id="cards" style={{display: "none"}}>
+              <h1>Hello World!</h1>
+            </div>
+            <div className="App-popup" id="settings" style={{display: "none"}}>
+              <h1>Settings</h1>
+            </div>
           </div>
         </div>
         <Routes>
