@@ -10,7 +10,7 @@ function Gacha() {
   const [pulledCard, setPulledCard] = useState(0);
   const [cardImageURL, setCardImageURL] = useState();
   const [currency, setCurrency] = useLocalStorage("currency");
-  const [cardJson] = useLocalStorage("cards");
+  const [cardJson, setCards] = useLocalStorage("cards");
   const cards = JSON.parse(cardJson) ?? {};
 
   function pullGacha() {
@@ -59,11 +59,11 @@ function Gacha() {
     // we don't have to use the cards setter because state will be updated by the currency setter
     if (pulledCard in cards) {
       cards[pulledCard]++;
-      localStorage.setItem("cards", JSON.stringify(cards));
+      setCards(JSON.stringify(cards));
       setCurrency(currency - 1);
     } else {
       cards[pulledCard] = 1;
-      localStorage.setItem("cards", JSON.stringify(cards));
+      setCards(JSON.stringify(cards));
       setCurrency(currency - 1);
     }
   }

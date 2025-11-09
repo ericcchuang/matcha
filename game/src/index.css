@@ -59,3 +59,9 @@ button:hover {
   transform: scale(2);
   margin-right: 5px;
 }
+
+.gameplayCard2 {
+  max-height: 6vw;
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+}

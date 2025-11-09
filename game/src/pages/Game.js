@@ -65,15 +65,15 @@ function Game() {
     });
   }
 
-  function ItemCard({ id, isSelected, onCardClick }) {
-    const imageUrl = cards[id] > 0 ? cardmap[id] : cardmap[12];
+  function ItemCard({ id, isSelected, onCardClick, className }) {
+    const imageUrl = cards[id] >= 1 ? cardmap[id] : cardmap[12];
     const cardStyle = {
       border: isSelected ? "5px solid green" : "5px solid #ccc",
     };
     return (
       <img
         src={imageUrl}
-        className="gameplayCard"
+        className={className}
         style={cardStyle}
         alt={`Card ${id}`}
         onClick={onCardClick}
@@ -84,6 +84,12 @@ function Game() {
   const [selectedIds, setSelectedIds] = useState([]);
 
   const handleCardClick = (id) => {
+    if (!(cards[id] > 0)) {
+      return;
+    }
+    if (selectedIds.length == 5) {
+      return;
+    }
     setSelectedIds((prevIds) => {
       if (prevIds.includes(id)) {
         return prevIds.filter((currentId) => currentId !== id);
@@ -97,7 +103,7 @@ function Game() {
       <div>
         {!currentProblem && time > 0 ? (
           <div>
-            <p>Select Cards</p>
+            <p>Select Cards. You may only select 5 cards.</p>
             {Object.entries(cardmap).map(([key]) => {
               // Check if this card's ID is in the state array
               const isSelected = selectedIds.includes(key);
@@ -109,6 +115,7 @@ function Game() {
                   id={key}
                   isSelected={isSelected}
                   onCardClick={() => handleCardClick(key)}
+                  className="gameplayCard"
                 />
               );
             })}
@@ -130,6 +137,21 @@ function Game() {
             <p>{prevCorrectWrong}</p>
             <p>Score: {score}</p>
             <p>Time: {time}</p>
+            <p>Selected Cards:</p>
+            {Object.entries(cardmap).map(([key]) => {
+              if (selectedIds.includes(key)) {
+                return (
+                  <ItemCard
+                    key={key}
+                    id={key}
+                    src={cardmap[key]}
+                    alt={`Selected Card ${key}`}
+                    className="gameplayCard2"
+                  />
+                );
+              }
+              return null;
+            })}
           </div>
         ) : (
           ""
