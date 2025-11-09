@@ -18,33 +18,64 @@ code {
 }
 
 button {
-  all: unset;             /* wipes ALL default browser styles */
-  transition: transform .2s; /* Animation */
+  all: unset; /* wipes ALL default browser styles */
+  transition: transform 0.2s; /* Animation */
 }
 
 button:hover {
-  transform: scale(.975); /* 2.5% zoom in */
+  transform: scale(0.975); /* 2.5% zoom in */
+}
+
+a {
+  all: unset;
+}
+
+h1 {
+  font-size: 5em;
+  margin-bottom: 0;
+}
+
+p {
+  all: unset;
+  font-size: 1.25em;
 }
 
 .Container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   height: 100%;
   gap: 5em;
 }
 
 .Card {
   flex: 1 1 auto;
-  width: 50em;
+  width: 40vw;
   background-color: #97da7b;
   border: 5px solid #00c27a;
-  border-radius: 2em;
+  border-radius: 5em;
   height: 100%;
   align-content: center;
-  font-size: 5em;
 }
 
 .playingCard {
   max-width: 50%;
   max-height: 25vw;
+}
+
+.gameplayCard {
+  max-height: 6vw;
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+}
+
+.gameplayCard:hover {
+  transform: scale(2);
+  margin-right: 5px;
+}
+
+.gameplayCard2 {
+  max-height: 6vw;
+  margin-right: 5px;
+  transition: transform 0.3s ease;
 }

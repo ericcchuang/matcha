@@ -1,21 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
-import Latex from "react-latex-next";
 import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <div className="Container">
-      <button className="Card">
-        <Link to="/Game">PLAY!!!</Link>
-        <Latex macros={{ "\\f": "#1f(#2)" }}>
-          {"$\\f\\relax{x} = x$ is rendered using macros"}
-        </Latex>
-      </button>
-      <button className="Card">
-        <Link to="/Gacha">Gacha</Link>
-      </button>
+      <div>
+        <Link to="/Game">
+          <button className="Card">
+            <img src={"/assets/icons/math.png"} className="App-img" />
+            <h1>PLAY</h1>
+          </button>
+        </Link>
+      </div>
+      <div>
+        <Link to="/Gacha">
+          <button className="Card">
+            <img src={"/assets/icons/gacha.png"} className="App-img" />
+            <h1>GACHA</h1>
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

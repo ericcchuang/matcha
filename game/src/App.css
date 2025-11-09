@@ -42,6 +42,7 @@
 .App-header-stat {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0.625em 0.75em 0.5em 0.75em;
@@ -49,7 +50,6 @@
   border: 2.5px solid #c68d79;
   border-radius: 1em;
   text-align: left;
-  font-size: 1.25em;
   gap: 0.5em;
 }
 
@@ -72,23 +72,71 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 0.625em 0.75em 0.5em 0.75em;
-  background-color: #ffd9ab90;
-  border: 2.5px solid #c68d79;
-  border-radius: 0.5em;
-  text-align: left;
-  font-size: 2em;
-  gap: 0.75em;
   height: 0.5em;
-  font-weight: bold;
+  text-align: left;
+  font-size: 1.75em;
+  border-radius: 0.5em;
+  gap: 0.75em;
+  
 }
 
 .App-header-options-button img {
   max-width: 1em;
 }
 
+.App-header-options-button, .App-button {
+  padding: 0.625em 0.75em 0.5em 0.75em;
+  background-color: #ffd9ab90;
+  border: 2.5px solid #c68d79;
+  font-weight: bold;
+}
+
+.App-button {
+  display: block;
+  justify-self: center;
+  width: 25%;
+  height: 1em;
+  margin-top: 1em;
+  padding-bottom: 0.75em;
+  border-radius: 2em;
+  font-size: 2em;
+}
+
+.App-button-x {
+  display: block;
+  justify-self: right;
+  padding: 0.5em 1em 1em 1em;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.App-header-logo:hover,
+.App-header-options-button,
+.App-button:hover,
+.App-button-x:hover {
+  cursor: pointer;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.App-img {
+  max-height: 50%;
+}
+
+.App-popup {
+  position: absolute;
+  z-index: 10;
+  height: 60%;
+  width: 80%;
+  background-color: #c68d79EE;
+  border: 5px solid #935d51;
+  border-radius: 4em;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes App-logo-spin {

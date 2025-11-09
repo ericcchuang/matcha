@@ -42,15 +42,16 @@ function Gacha() {
   return (
     <div>
       <p>
-        <Link to="/">Home</Link>
-      </p>
-      <p>
         {cardImageURL ? (
           <img src={cardImageURL} className="playingCard" />
         ) : (
           <div>no card pulled</div>
         )}
-        <button onClick={pullGacha} disabled={currency <= 0 ? true : false}>
+        <button
+          onClick={pullGacha}
+          className="App-button"
+          disabled={currency <= 0 ? true : false}
+        >
           Pull!
         </button>
       </p>
