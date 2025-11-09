@@ -23,10 +23,16 @@ function Game() {
   });
   const [currency, setCurrency] = useLocalStorage("currency");
   const [ownedCardsString, setCards] = useLocalStorage("cards");
+  const [highScore, setHighScore] = useLocalStorage("highScore");
   const ownedCards = JSON.parse(ownedCardsString);
   const [selectedIds, setSelectedIds] = useState([]);
   const { data: cardData, isPending, error } = useCards();
 
+  useEffect(() => {
+    if (!highScore || score > highScore) {
+      setHighScore(score);
+    }
+  }, [score, highScore, setHighScore]);
   if (isPending) return <span>Loading...</span>;
   if (error) return <span>Error loading data</span>;
   function initGame() {
@@ -108,7 +114,9 @@ function Game() {
               );
             })}
             <br />
-            <p>You may only select up to 5 cards. Click "Start Game" to start!</p>
+            <p>
+              You may only select up to 5 cards. Click "Start Game" to start!
+            </p>
             <button onClick={getMathProblems} className="App-button">
               START!
             </button>

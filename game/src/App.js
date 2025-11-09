@@ -12,7 +12,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import toggle from "./hooks/toggle";
 
 function App() {
-  const [currency] = useLocalStorage("currency");
+  const [currency] = useLocalStorage("currency", 0);
+  const [highScore] = useLocalStorage("highScore", 0);
   const queryClient = new QueryClient();
 
   return (
@@ -32,13 +33,16 @@ function App() {
             </div>
           </div>
           <div className="App-header-stat">
-            <p>Highest Score: 000</p>
+            <p>Highest Score: {highScore}</p>
             <div className="App-header-stat-img">
               <img src={"/assets/icons/matcha-logo.png"} />
             </div>
           </div>
           <div className="App-header-options">
-            <button onClick={() => toggle("cards")} className="App-header-options-button">
+            <button
+              onClick={() => toggle("cards")}
+              className="App-header-options-button"
+            >
               CARDS
               <img src={"/assets/icons/cards.png"} />
             </button>
@@ -46,11 +50,26 @@ function App() {
             <button onClick={() => toggle("settings")} className="App-header-options-img">
               <img src={"/assets/icons/settings.png"} />
             </button> */}
-            <div className="App-popup" id="cards" style={{ display: "none" }}>  
-              <button onClick={() => toggle("cards")} className="App-button-x" id="x">x</button>
+            <div className="App-popup" id="cards" style={{ display: "none" }}>
+              <button
+                onClick={() => toggle("cards")}
+                className="App-button-x"
+                id="x"
+              >
+                x
+              </button>
               <h1>My Cards</h1>
               <div>
-                <br /><br /><br /><br /><h2>Cards Here Meow</h2><br /><br /><br /><br /><br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h2>Cards Here Meow</h2>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
               </div>
             </div>
             {/* PLAY popup
