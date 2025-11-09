@@ -8,10 +8,9 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import useCards from "../hooks/useCards";
 
 function Gacha() {
-  const [pulledCard, setPulledCard] = useState(0);
   const [cardImageURL, setCardImageURL] = useState();
   const [currency, setCurrency] = useLocalStorage("currency");
-  const [localCardJson] = useLocalStorage("cards");
+  const [localCardJson, setCards] = useLocalStorage("cards");
   const cards = JSON.parse(localCardJson) ?? {};
   const { data: cardData, isPending, error } = useCards();
 
@@ -19,27 +18,23 @@ function Gacha() {
   if (error) return <span>Error loading data</span>;
 
   function pullGacha() {
-    // setPulledCard(Math.floor(Math.random() * cardData.length));
     const pullNum = Math.floor(Math.random() * 100);
     // TODO: implement epic and rare cards
-    // const rarity = pullNum < 0 ? 'epic' : pullNum < 5 ? 'rare' : pullNum > 20 ? 'uncommon' : 'common';
-    const rarity = pullNum > 20 ? "uncommon" : "common";
+    // const rarity = pullNum < 0 ? 'epic' : pullNum < 5 ? 'rare' : pullNum < 20 ? 'uncommon' : 'common';
+    const rarity = pullNum < 20 ? "uncommon" : "common";
     const eligibleCards = cardData.filter((card) => card["rarity"] === rarity);
-    setPulledCard(
-      eligibleCards[Math.floor(Math.random() * eligibleCards.length)]
-    );
+    const card =
+      eligibleCards[Math.floor(Math.random() * eligibleCards.length)];
 
-    setCardImageURL(
-      `/assets/cards/${pulledCard["rarity"]}/${pulledCard["name"]}.png`
-    );
+    setCardImageURL(`/assets/cards/${card["rarity"]}/${card["name"]}.png`);
     // we don't have to use the cards setter because state will be updated by the currency setter
-    if (pulledCard["id"] in cards) {
-      cards[pulledCard["id"]]++;
-      localStorage.setItem("cards", JSON.stringify(cards));
+    if (card["id"] in cards) {
+      cards[card["id"]]++;
+      setCards(JSON.stringify(cards));
       setCurrency(currency - 1);
     } else {
-      cards[pulledCard["id"]] = 1;
-      localStorage.setItem("cards", JSON.stringify(cards));
+      cards[card["id"]] = 1;
+      setCards(JSON.stringify(cards));
       setCurrency(currency - 1);
     }
   }
