@@ -72,7 +72,7 @@ function Game() {
   }
 
   const handleCardClick = (id) => {
-    if (!ownedCards || ownedCards[id] <= 0) {
+    if (!ownedCards || !ownedCards[id] || ownedCards[id] <= 0) {
       return;
     }
     if (selectedIds.length >= 5 && !selectedIds.includes(id)) {
