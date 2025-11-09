@@ -8,6 +8,7 @@ import { useTimer } from "use-timer";
 import useLocalStorage from "../hooks/useLocalStorage";
 import filler from "./filler_data.json";
 import useCards from "../hooks/useCards";
+import ItemCard from "../hooks/itemCard";
 
 function Game() {
   const [problemList, setProblemList] = useState([]);
@@ -70,28 +71,8 @@ function Game() {
     });
   }
 
-  function ItemCard({ card, isSelected, onCardClick, className }) {
-    // const imageUrl = cards[id] >= 1 ? cardmap[id] : cardmap[12];
-    const playerOwnsCard = ownedCards && card["id"] in ownedCards;
-    const imageUrl = playerOwnsCard
-      ? `/assets/cards/${card["rarity"]}/${card["name"]}.png`
-      : "/assets/icons/math.png";
-    const cardStyle = {
-      border: isSelected ? "5px solid green" : "5px solid #ccc",
-    };
-    return (
-      <img
-        src={imageUrl}
-        className={className}
-        style={cardStyle}
-        alt={`Card ${card["id"]}`}
-        onClick={onCardClick}
-      />
-    );
-  }
-
   const handleCardClick = (id) => {
-    if (!ownedCards || ownedCards[id] <= 0) {
+    if (!ownedCards || !ownedCards[id] || ownedCards[id] <= 0) {
       return;
     }
     if (selectedIds.length >= 5 && !selectedIds.includes(id)) {
@@ -110,7 +91,7 @@ function Game() {
       <div>
         {!currentProblem && time > 0 ? (
           <div>
-            <p>Select Cards. You may only select 5 cards.</p>
+            <h1>Select Your Cards:</h1>
             {Object.entries(cardData).map(([key]) => {
               // Check if this card's ID is in the state array
               const isSelected = selectedIds.includes(key);
@@ -126,8 +107,11 @@ function Game() {
                 />
               );
             })}
-            <p>Click "Start Game" to start!</p>
-            <button onClick={getMathProblems}>Start Game</button>
+            <br />
+            <p>You may only select up to 5 cards. Click "Start Game" to start!</p>
+            <button onClick={getMathProblems} className="App-button">
+              START!
+            </button>
           </div>
         ) : (
           ""
