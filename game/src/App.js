@@ -41,6 +41,15 @@ function App() {
     });
   };
 
+  function deleteAllData() {
+    localStorage.removeItem("currency");
+    localStorage.removeItem("cards");
+    localStorage.removeItem("highScore");
+    setCurrency(0);
+    setHighScore(0);
+    toggle("settings");
+  }
+
   return (
       <div className="App">
         <div className="App-header">
@@ -113,10 +122,23 @@ function App() {
                 </button>
               </Link>
             </div> */}
-            {/* Settings popup
-            <div className="App-popup" id="settings">
+            <div
+              className="App-popup"
+              id="settings"
+              style={{ display: "none" }}
+            >
+              <button
+                onClick={() => toggle("settings")}
+                className="App-button-x"
+                id="x"
+              >
+                x
+              </button>
               <h1>Settings</h1>
-            </div> */}
+              <button className="App-button" onClick={() => deleteAllData()}>
+                DELETE ALL DATA!!
+              </button>
+            </div>
           </div>
         </div>
         <Routes>

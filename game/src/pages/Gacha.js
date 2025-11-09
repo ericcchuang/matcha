@@ -19,7 +19,6 @@ function Gacha() {
 
   function pullGacha() {
     const pullNum = Math.floor(Math.random() * 100);
-    // TODO: implement epic and rare cards
     const rarity =
       pullNum === 0
         ? "epic"
@@ -58,7 +57,7 @@ function Gacha() {
           className="App-button"
           disabled={currency <= 0 ? true : false}
         >
-          Pull!
+          Pull! (costs $1)
         </button>
       </p>
     </div>
