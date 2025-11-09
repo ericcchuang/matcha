@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useTimer } from "use-timer";
 import useLocalStorage from "../hooks/useLocalStorage";
 import filler from "./filler_data.json";
-import cardmap from "../cardmap.json";
+import useCards from "../hooks/useCards";
 
 function Game() {
   const [problemList, setProblemList] = useState([]);
@@ -21,9 +21,13 @@ function Game() {
     timerType: "DECREMENTAL",
   });
   const [currency, setCurrency] = useLocalStorage("currency");
-  const [cardsFromStorage, setCards] = useLocalStorage("cards");
-  const cards = cardsFromStorage === null ? initialCards : cardsFromStorage;
+  const [ownedCardsString, setCards] = useLocalStorage("cards");
+  const ownedCards = JSON.parse(ownedCardsString);
+  const [selectedIds, setSelectedIds] = useState([]);
+  const { data: cardData, isPending, error } = useCards();
 
+  if (isPending) return <span>Loading...</span>;
+  if (error) return <span>Error loading data</span>;
   function initGame() {
     start();
     setExtraTime(10);
@@ -66,8 +70,12 @@ function Game() {
     });
   }
 
-  function ItemCard({ id, isSelected, onCardClick, className }) {
-    const imageUrl = cards[id] >= 1 ? cardmap[id] : cardmap[12];
+  function ItemCard({ card, isSelected, onCardClick, className }) {
+    // const imageUrl = cards[id] >= 1 ? cardmap[id] : cardmap[12];
+    const playerOwnsCard = ownedCards && card["id"] in ownedCards;
+    const imageUrl = playerOwnsCard
+      ? `/assets/cards/${card["rarity"]}/${card["name"]}.png`
+      : "/assets/icons/math.png";
     const cardStyle = {
       border: isSelected ? "5px solid green" : "5px solid #ccc",
     };
@@ -76,19 +84,17 @@ function Game() {
         src={imageUrl}
         className={className}
         style={cardStyle}
-        alt={`Card ${id}`}
+        alt={`Card ${card["id"]}`}
         onClick={onCardClick}
       />
     );
   }
 
-  const [selectedIds, setSelectedIds] = useState([]);
-
   const handleCardClick = (id) => {
-    if (!(cards[id] > 0)) {
+    if (!ownedCards || ownedCards[id] <= 0) {
       return;
     }
-    if (selectedIds.length == 5) {
+    if (selectedIds.length >= 5 && !selectedIds.includes(id)) {
       return;
     }
     setSelectedIds((prevIds) => {
@@ -105,7 +111,7 @@ function Game() {
         {!currentProblem && time > 0 ? (
           <div>
             <p>Select Cards. You may only select 5 cards.</p>
-            {Object.entries(cardmap).map(([key]) => {
+            {Object.entries(cardData).map(([key]) => {
               // Check if this card's ID is in the state array
               const isSelected = selectedIds.includes(key);
 
@@ -113,7 +119,7 @@ function Game() {
               return (
                 <ItemCard
                   key={key}
-                  id={key}
+                  card={cardData[key]}
                   isSelected={isSelected}
                   onCardClick={() => handleCardClick(key)}
                   className="gameplayCard"
@@ -139,13 +145,13 @@ function Game() {
             <p>Score: {score}</p>
             <p>Time: {time}</p>
             <p>Selected Cards:</p>
-            {Object.entries(cardmap).map(([key]) => {
+            {Object.entries(cardData).map(([key]) => {
               if (selectedIds.includes(key)) {
                 return (
                   <ItemCard
+                    card={cardData[key]}
                     key={key}
                     id={key}
-                    src={cardmap[key]}
                     alt={`Selected Card ${key}`}
                     className="gameplayCard2"
                   />
