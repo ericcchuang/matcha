@@ -22,6 +22,7 @@ function App() {
     localStorage.removeItem("highScore");
     setCurrency(0);
     setHighScore(0);
+    toggle("settings");
   }
 
   return (

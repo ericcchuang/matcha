@@ -224,7 +224,7 @@ function Game() {
         )}
       </div>
       <p>
-        <Link to="/">Home</Link>
+        <Link to="/">Quit</Link>
       </p>
     </div>
   );
