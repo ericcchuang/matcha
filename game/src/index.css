@@ -1,7 +1,7 @@
 #root,
 html,
 body {
-  height: 94.5%;
+  height: 97.5%;
   margin: 1vh;
   background-color: #f5e7d8;
   /* -webkit-font-smoothing: antialiased;
@@ -32,6 +32,16 @@ a {
 
 h1 {
   font-size: 5vh;
+  margin: 0;
+}
+
+h2 {
+  font-size: 4vh;
+  margin: 0;
+}
+
+h3 {
+  font-size: 3vh;
   margin: 0;
 }
 
@@ -75,7 +85,7 @@ p {
 }
 
 .gameplayCard {
-  max-height: 7.5vw;
+  max-height: 20vh;
   margin-right: 5px;
   transition: transform 0.3s ease;
 }

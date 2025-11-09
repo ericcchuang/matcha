@@ -175,7 +175,7 @@ function Game() {
                 </p>{" "}
               </div>
             ) : (
-              <h2>You own no cards! Buy some at the Gacha!</h2>
+              <h2>You own no cards. Draw cards at the Gacha!</h2>
             )}
             <button onClick={getMathProblems} className="App-button">
               START!
@@ -184,23 +184,28 @@ function Game() {
         ) : (
           ""
         )}
-        {loading ? <div>loading problems...</div> : ""}
+        {loading ? <div>Loading problems...</div> : ""}
         {currentProblem && time > 0 && !loading ? (
-          <div>
-            <p>{currentProblem.problem} = </p>
-            <label>
-              <input name="answer" id="answer" onKeyDown={handleKeyDown} />
-            </label>
+          <div style={{width: "100%", height: "100%", alignContent: "center", justifyContent: "center"}}>
+            <h3 style={{marginTop: "4vh"}}>Score: {score} | Time: {time}</h3>
             <br />
-            <button onClick={handleNext} disabled={problemList.length === 0}>
+            <h2>{prevCorrectWrong}</h2>
+            <div className="Container" style={{height: "50%"}}>
+              <div style={{margin: "0"}}>
+                <h1 style={{fontSize: "20vh"}}>{currentProblem.problem} = </h1>
+              </div>
+              <div className="Container" style={{height: "auto"}}>
+              <label>
+                <input name="answer" id="answer" className="App-input" onKeyDown={handleKeyDown} />
+              </label>
+              </div>
+            </div>
+            <div className="container">
+            <button onClick={handleNext} className="App-button" disabled={problemList.length === 0}>
               Submit
             </button>
-            <br />
-            <p>{prevCorrectWrong}</p>
-            <br />
-            <p>Score: {score}</p>
-            <br />
-            <p>Time: {time}</p>
+            </div>
+            <h3>Cards:</h3>
             {selectedIds == [] ? <p>Selected Cards:</p> : <></>}
             <br />
             {Object.entries(cardData).map(([key]) => {
@@ -222,16 +227,18 @@ function Game() {
           ""
         )}
         {time < 1 ? (
-          <div>
-            Game over!! You scored {score}. You earned ${currencyEarned}.
+          <div style={{width: "100%", height: "67vh", alignContent: "center", justifyContent: "center"}}>
+            <h1 style={{color: "#7c473e", fontSize: "15vh"}}>GAME OVER</h1>
+            <div style={{marginBottom: "2vh"}}><h3>You scored:</h3> <p style={{fontSize: "5vh"}}>{score} points</p></div>
+            <div><h3>You earned:</h3> <p style={{fontSize: "5vh"}}>${currencyEarned}</p></div>
           </div>
         ) : (
           ""
         )}
       </div>
-      <p>
-        <Link to="/">Quit</Link>
-      </p>
+      <button>
+        <a href="/" className="App-button">Quit</a>
+      </button>
     </div>
   );
 }
