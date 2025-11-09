@@ -20,8 +20,14 @@ function Gacha() {
   function pullGacha() {
     const pullNum = Math.floor(Math.random() * 100);
     // TODO: implement epic and rare cards
-    // const rarity = pullNum < 0 ? 'epic' : pullNum < 5 ? 'rare' : pullNum < 20 ? 'uncommon' : 'common';
-    const rarity = pullNum < 20 ? "uncommon" : "common";
+    const rarity =
+      pullNum === 0
+        ? "epic"
+        : pullNum < 5
+        ? "rare"
+        : pullNum < 20
+        ? "uncommon"
+        : "common";
     const eligibleCards = cardData.filter((card) => card["rarity"] === rarity);
     const card =
       eligibleCards[Math.floor(Math.random() * eligibleCards.length)];

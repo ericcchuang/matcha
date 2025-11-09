@@ -58,5 +58,15 @@
     "id": 11,
     "name": "minus",
     "rarity": "uncommon"
+  },
+  {
+    "id": 12,
+    "name": "nine-plus-ten",
+    "rarity": "rare"
+  },
+  {
+    "id": 13,
+    "name": "six-seven",
+    "rarity": "epic"
   }
 ]
