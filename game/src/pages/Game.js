@@ -57,7 +57,9 @@ function Game() {
     document.getElementById("answer").value = "";
     if (answer == currentProblem.answer) {
       setPrevCorrectWrong("Correct!");
-      setScore(score + 1);
+      setScore(
+        calculateScore(currentProblem.problem, answer, selectedIds) + score
+      );
       setCurrency(Number(currency) + 1);
       advanceTime(-extraTime);
       if (extraTime > 2) {
@@ -69,6 +71,43 @@ function Game() {
     setCurrentIndex((prevIndex) => {
       return (prevIndex + 1) % problemList.length;
     });
+  }
+
+  function calculateScore(question, answer, equipped) {
+    let scoreAdd = 1;
+    const lastDigit = answer % 10;
+
+    if (equipped.includes(lastDigit.toString())) {
+      scoreAdd = scoreAdd + 1;
+    }
+
+    if (equipped.includes("10") && question.includes("+")) {
+      scoreAdd = scoreAdd + 1;
+    }
+
+    if (equipped.includes("11") && question.includes("-")) {
+      scoreAdd = scoreAdd + 1;
+    }
+
+    if (equipped.includes("12")) {
+      if (answer == "21") {
+        scoreAdd = scoreAdd + 21;
+      } else if (answer == "19") {
+        scoreAdd = scoreAdd + 19;
+      } else if (lastDigit == 9 || lastDigit == 0) {
+        scoreAdd = scoreAdd + 1;
+      }
+      scoreAdd = scoreAdd + 1;
+    }
+
+    if (equipped.includes("13")) {
+      if (lastDigit == 6) {
+        scoreAdd = scoreAdd + 6;
+      } else if (lastDigit == 7) {
+        scoreAdd = scoreAdd + 7;
+      }
+    }
+    return scoreAdd;
   }
 
   const handleCardClick = (id) => {
@@ -86,6 +125,12 @@ function Game() {
     });
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleNext();
+    }
+  };
+
   return (
     <div>
       <div>
@@ -98,6 +143,21 @@ function Game() {
                 // Check if this card's ID is in the state array
                 const isSelected = selectedIds.includes(key);
 
+              // Render the ItemCard, passing the props it needs
+              return (
+                <ItemCard
+                  key={key}
+                  card={cardData[key]}
+                  isSelected={isSelected}
+                  onCardClick={() => handleCardClick(key)}
+                  className="gameplayCard"
+                />
+              );
+            })}
+            <br />
+            <p>
+              You may only select up to 5 cards. Click "Start Game" to start!
+            </p>
                 // Render the ItemCard, passing the props it needs
                 return (
                   <ItemCard
@@ -121,15 +181,21 @@ function Game() {
           <div>
             {currentProblem.problem} =
             <label>
-              <input name="answer" id="answer" />
+              <input name="answer" id="answer" onKeyDown={handleKeyDown} />
             </label>
+            <br />
             <button onClick={handleNext} disabled={problemList.length === 0}>
               Submit
             </button>
+            <br />
             <p>{prevCorrectWrong}</p>
+            <br />
             <p>Score: {score}</p>
+            <br />
             <p>Time: {time}</p>
+            <br />
             <p>Selected Cards:</p>
+            <br />
             {Object.entries(cardData).map(([key]) => {
               if (selectedIds.includes(key)) {
                 return (
