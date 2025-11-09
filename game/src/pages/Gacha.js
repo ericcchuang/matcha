@@ -58,7 +58,7 @@ function Gacha() {
           className="App-button"
           disabled={currency <= 0 ? true : false}
         >
-          Pull!
+          Pull! (costs $1)
         </button>
       </p>
     </div>
