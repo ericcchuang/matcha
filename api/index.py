@@ -2,6 +2,7 @@ import json
 from mangum import Mangum
 
 #from dotenv import load_dotenv
+from dedalus_labs import AsyncDedalus, DedalusRunner
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -97,39 +98,23 @@ card_info = [
 
 @app.get("/api/generateProblems")
 async def generateProblems():
-  try:
     json_string = await getProblems(prompts["arithmetic"]) 
-  except Exception as e:
-    # Return a structured error instead of letting the exception produce a 500
-    print(f"Error generating problems: {e}")
-    return {"error": "Failed to generate problems from LLM", "details": str(e)}
-
-  try:
-    problems = json.loads(json_string)
-    return problems
-  except json.JSONDecodeError as e:
-    print(f"Error parsing LLM output: {e}")
-    # Return the raw output to help debugging in logs and a parse error message
-    return {"error": "Failed to parse JSON from LLM", "raw_output": json_string}
+    try:
+        problems = json.loads(json_string)
+        return problems
+    except json.JSONDecodeError as e:
+        print(f"Error parsing LLM output: {e}")
+        return {"error": "Failed to parse JSON from LLM"}
+    pass
 
 async def getProblems(input):
-  # Import dedalus lazily so the module can be imported even if the package
-  # isn't installed in the environment. This prevents import-time failures
-  # which cause Vercel to return 500 immediately.
-  try:
-    from dedalus_labs import AsyncDedalus, DedalusRunner
-  except Exception as e:
-    # If the package is missing or fails to import, raise a controlled
-    # exception so callers can return a helpful error message.
-    raise RuntimeError(f"dedalus_labs is not available: {e}")
-
-  client = AsyncDedalus()
-  runner = DedalusRunner(client)
-  response = await runner.run(
-    input=input,
-    model="gemini-2.5-flash-lite",
-  )
-  return response.final_output
+    client = AsyncDedalus()
+    runner = DedalusRunner(client)
+    response = await runner.run(
+        input=input,
+        model="gemini-2.5-flash-lite",
+    )
+    return(response.final_output)
 
 @app.get("/api/cards")
 async def cards():
