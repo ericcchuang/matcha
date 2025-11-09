@@ -1,7 +1,7 @@
 import json
 from mangum import Mangum
 
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from dedalus_labs import AsyncDedalus, DedalusRunner
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-load_dotenv()
+#load_dotenv()
 
 '''with open("./prompts.json","r") as f:
     prompts = json.load(f)'''
