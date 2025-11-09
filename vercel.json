@@ -8,17 +8,24 @@
     },
     {
       "src": "game/package.json",
-      "use": "@vercel/static-build"
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index.py"
+      "src": "/api/(.*)",
+      "dest": "/api/index.py"
     },
     {
-      "source": "/game/(.*)",
-      "destination": "/game/build/index.html"
+      "src": "/game/(.*)",
+      "dest": "/game/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/game/$1"
     }
   ]
 }
