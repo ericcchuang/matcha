@@ -19,17 +19,26 @@ function Gacha() {
   if (error) return <span>Error loading data</span>;
 
   function pullGacha() {
-    setPulledCard(Math.floor(Math.random() * cardData.length));
-    console.log(pulledCard);
-    let card = cardData[pulledCard];
-    setCardImageURL(`/assets/cards/${card["rarity"]}/${card["name"]}.png`);
+    // setPulledCard(Math.floor(Math.random() * cardData.length));
+    const pullNum = Math.floor(Math.random() * 100);
+    // TODO: implement epic and rare cards
+    // const rarity = pullNum < 0 ? 'epic' : pullNum < 5 ? 'rare' : pullNum > 20 ? 'uncommon' : 'common';
+    const rarity = pullNum > 20 ? "uncommon" : "common";
+    const eligibleCards = cardData.filter((card) => card["rarity"] === rarity);
+    setPulledCard(
+      eligibleCards[Math.floor(Math.random() * eligibleCards.length)]
+    );
+
+    setCardImageURL(
+      `/assets/cards/${pulledCard["rarity"]}/${pulledCard["name"]}.png`
+    );
     // we don't have to use the cards setter because state will be updated by the currency setter
-    if (pulledCard in cards) {
-      cards[pulledCard]++;
+    if (pulledCard["id"] in cards) {
+      cards[pulledCard["id"]]++;
       localStorage.setItem("cards", JSON.stringify(cards));
       setCurrency(currency - 1);
     } else {
-      cards[pulledCard] = 1;
+      cards[pulledCard["id"]] = 1;
       localStorage.setItem("cards", JSON.stringify(cards));
       setCurrency(currency - 1);
     }
