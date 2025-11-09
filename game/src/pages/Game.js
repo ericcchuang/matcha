@@ -23,10 +23,16 @@ function Game() {
   });
   const [currency, setCurrency] = useLocalStorage("currency");
   const [ownedCardsString, setCards] = useLocalStorage("cards");
+  const [highScore, setHighScore] = useLocalStorage("highScore");
   const ownedCards = JSON.parse(ownedCardsString);
   const [selectedIds, setSelectedIds] = useState([]);
   const { data: cardData, isPending, error } = useCards();
 
+  useEffect(() => {
+    if (!highScore || score > highScore) {
+      setHighScore(score);
+    }
+  }, [score, highScore, setHighScore]);
   if (isPending) return <span>Loading...</span>;
   if (error) return <span>Error loading data</span>;
   function initGame() {

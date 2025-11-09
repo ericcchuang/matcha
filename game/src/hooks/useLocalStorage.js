@@ -1,6 +1,9 @@
 import { useState, useSyncExternalStore } from "react";
 
-export default function useLocalStorage(key) {
+export default function useLocalStorage(key, defaultVal) {
+  if (defaultVal != null && !localStorage.getItem(key)) {
+    localStorage.setItem(key, defaultVal);
+  }
   const subscribe = (callback) => {
     const handleChange = (event) => {
       if (event.key === key) {
