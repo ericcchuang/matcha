@@ -6,12 +6,20 @@ function ItemCard({ card, isSelected, onCardClick, className }) {
 
   // const imageUrl = cards[id] >= 1 ? cardmap[id] : cardmap[12];
   const playerOwnsCard = ownedCards && card["id"] in ownedCards;
-  const imageUrl = playerOwnsCard
-    ? `/assets/cards/${card["rarity"]}/${card["name"]}.png`
-    : "/assets/icons/math.png";
-  const cardStyle = {
-    border: isSelected ? "5px solid green" : "5px solid #ccc",
-  };
+  const imageUrl = `/assets/cards/${card["rarity"]}/${card["name"]}.png`;
+  var cardStyle = {};
+
+  if (!(className.endsWith("noTransition"))) {
+    if (!playerOwnsCard) { return; }
+    else {
+      cardStyle = {
+        outline: isSelected ? "5px solid green" : "none",
+        borderRadius: "4px" }
+    }
+  } else if (!playerOwnsCard) {
+    cardStyle = { filter: "grayscale(100%) brightness(75%)" };
+  }
+
   return (
     <img
       src={imageUrl}

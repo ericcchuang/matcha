@@ -2,7 +2,7 @@
 html,
 body {
   height: 94.5%;
-  margin: 1em;
+  margin: 1vh;
   background-color: #f5e7d8;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
@@ -31,13 +31,13 @@ a {
 }
 
 h1 {
-  font-size: 5em;
-  margin-bottom: 0;
+  font-size: 5vh;
+  margin: 0;
 }
 
 p {
   all: unset;
-  font-size: 1.25em;
+  font-size: 2vh;
 }
 
 .Container {
@@ -45,7 +45,7 @@ p {
   flex-direction: row;
   justify-content: center;
   height: 100%;
-  gap: 5em;
+  gap: 5vh;
 }
 
 .Card {
@@ -53,24 +53,40 @@ p {
   width: 40vw;
   background-color: #97da7b;
   border: 5px solid #00c27a;
-  border-radius: 5em;
+  border-radius: 5vh;
   height: 100%;
   align-content: center;
 }
 
+.gridCard {
+  display: flex;
+  width: 90%;
+  height: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-self: center;
+  justify-content: center;
+  margin: 2vh;
+  gap: 1.5vh;
+}
+
 .playingCard {
-  max-width: 50%;
-  max-height: 25vw;
+  max-height: 50vh;
 }
 
 .gameplayCard {
-  max-height: 6vw;
+  max-height: 7.5vw;
   margin-right: 5px;
   transition: transform 0.3s ease;
 }
 
+.gameplayCard-noTransition {
+  max-height: 7.5vw;
+  margin-right: 5px;
+}
+
 .gameplayCard:hover {
-  transform: scale(2);
+  transform: scale(1.25);
   margin-right: 5px;
 }
 

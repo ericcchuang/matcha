@@ -142,7 +142,8 @@ function Game() {
       <div>
         {!currentProblem && time > 0 ? (
           <div>
-            <h1>Select Your Cards:</h1>
+            <h1>Select Your Cards</h1>
+            <div className="gridCard">
             {Object.entries(cardData).map(([key]) => {
               // Check if this card's ID is in the state array
               const isSelected = selectedIds.includes(key);
@@ -158,7 +159,7 @@ function Game() {
                 />
               );
             })}
-            <br />
+            </div>
             <p>
               You may only select up to 5 cards. Click "Start Game" to start!
             </p>
