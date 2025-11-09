@@ -145,32 +145,39 @@ function Game() {
       handleNext();
     }
   };
-
   return (
     <div>
       <div>
         {!currentProblem && time > 0 && !loading ? (
-          <div>
-            <h1>Select Your Cards:</h1>
-            {Object.entries(cardData).map(([key]) => {
-              // Check if this card's ID is in the state array
-              const isSelected = selectedIds.includes(key);
+          <div className="container">
+            {ownedCards && ownedCards != {} ? (
+              <div>
+                <h1>Select Your Cards</h1>
+                <div className="gridCard">
+                  {Object.entries(cardData).map(([key]) => {
+                    // Check if this card's ID is in the state array
+                    const isSelected = selectedIds.includes(key);
 
-              // Render the ItemCard, passing the props it needs
-              return (
-                <ItemCard
-                  key={key}
-                  card={cardData[key]}
-                  isSelected={isSelected}
-                  onCardClick={() => handleCardClick(key)}
-                  className="gameplayCard"
-                />
-              );
-            })}
-            <br />
-            <p>
-              You may only select up to 5 cards. Click "Start Game" to start!
-            </p>
+                    // Render the ItemCard, passing the props it needs
+                    return (
+                      <ItemCard
+                        key={key}
+                        card={cardData[key]}
+                        isSelected={isSelected}
+                        onCardClick={() => handleCardClick(key)}
+                        className="gameplayCard"
+                      />
+                    );
+                  })}
+                </div>
+                <p>
+                  You may only select up to 5 cards. Click "Start Game" to
+                  start!
+                </p>{" "}
+              </div>
+            ) : (
+              <h2>You own no cards! Buy some at the Gacha!</h2>
+            )}
             <button onClick={getMathProblems} className="App-button">
               START!
             </button>
@@ -195,8 +202,7 @@ function Game() {
             <p>Score: {score}</p>
             <br />
             <p>Time: {time}</p>
-            <br />
-            <p>Selected Cards:</p>
+            {selectedIds == [] ? <p>Selected Cards:</p> : <></>}
             <br />
             {Object.entries(cardData).map(([key]) => {
               if (selectedIds.includes(key)) {
