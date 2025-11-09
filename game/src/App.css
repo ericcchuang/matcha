@@ -114,6 +114,12 @@
   height: 20vh;
   width: 20vw;
   font-size: 20vh;
+  background-color: transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-color: black;
+  border-width: 5px;
 }
 
 .App-popup {
