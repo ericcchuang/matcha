@@ -12,9 +12,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import toggle from "./hooks/toggle";
 
 function App() {
-  const [currency] = useLocalStorage("currency", 0);
-  const [highScore] = useLocalStorage("highScore", 0);
+  const [currency, setCurrency] = useLocalStorage("currency", 0);
+  const [highScore, setHighScore] = useLocalStorage("highScore", 0);
   const queryClient = new QueryClient();
+
+  function deleteAllData() {
+    localStorage.removeItem("currency");
+    localStorage.removeItem("cards");
+    localStorage.removeItem("highScore");
+    setCurrency(0);
+    setHighScore(0);
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -46,10 +54,12 @@ function App() {
               CARDS
               <img src={"/assets/icons/cards.png"} />
             </button>
-            {/* Settings button
-            <button onClick={() => toggle("settings")} className="App-header-options-img">
+            <button
+              onClick={() => toggle("settings")}
+              className="App-header-options-img"
+            >
               <img src={"/assets/icons/settings.png"} />
-            </button> */}
+            </button>
             <div className="App-popup" id="cards" style={{ display: "none" }}>
               <button
                 onClick={() => toggle("cards")}
@@ -86,10 +96,23 @@ function App() {
                 </button>
               </Link>
             </div> */}
-            {/* Settings popup
-            <div className="App-popup" id="settings">
+            <div
+              className="App-popup"
+              id="settings"
+              style={{ display: "none" }}
+            >
+              <button
+                onClick={() => toggle("settings")}
+                className="App-button-x"
+                id="x"
+              >
+                x
+              </button>
               <h1>Settings</h1>
-            </div> */}
+              <button className="App-button" onClick={() => deleteAllData()}>
+                DELETE ALL DATA!!
+              </button>
+            </div>
           </div>
         </div>
         <Routes>
