@@ -27,6 +27,9 @@ function Game() {
   const [highScore, setHighScore] = useLocalStorage("highScore");
   const ownedCards = JSON.parse(ownedCardsString);
   const [selectedIds, setSelectedIds] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currencyEarned, setCurrencyEarned] = useState(0);
+
   const { data: cardData, isPending, error } = useCards();
 
   useEffect(() => {
@@ -43,6 +46,7 @@ function Game() {
   }
 
   async function getMathProblems() {
+    setLoading(true);
     try {
       const response = await fetch(`${endpoint}generateProblems`, {
         method: "GET",
@@ -52,9 +56,11 @@ function Game() {
       if (response.ok) {
         setProblemList(Object.values(data));
         initGame();
+        setLoading(false);
       }
     } catch (error) {
       console.log("error!!!!!!", error);
+      setLoading(false);
     }
   }
 
@@ -68,8 +74,9 @@ function Game() {
         calculateScore(currentProblem.problem, answer, selectedIds) + score
       );
       setCurrency(Number(currency) + 1);
+      setCurrencyEarned(Number(currencyEarned) + 1);
       advanceTime(-extraTime);
-      if (extraTime > 2) {
+      if (extraTime > 1) {
         setExtraTime(extraTime - 1);
       }
     } else {
@@ -141,7 +148,7 @@ function Game() {
   return (
     <div>
       <div>
-        {!currentProblem && time > 0 ? (
+        {!currentProblem && time > 0 && !loading ? (
           <div>
             <h1>Select Your Cards:</h1>
             {Object.entries(cardData).map(([key]) => {
@@ -170,7 +177,8 @@ function Game() {
         ) : (
           ""
         )}
-        {currentProblem && time > 0 ? (
+        {loading ? <div>loading problems...</div> : ""}
+        {currentProblem && time > 0 && !loading ? (
           <div>
             {currentProblem.problem} =
             <label>
@@ -197,7 +205,7 @@ function Game() {
                     key={key}
                     id={key}
                     alt={`Selected Card ${key}`}
-                    className="gameplayCard2"
+                    className="gameplayCard"
                   />
                 );
               }
@@ -209,7 +217,7 @@ function Game() {
         )}
         {time < 1 ? (
           <div>
-            Game over!! You scored {score}. You earned {score} currency.
+            Game over!! You scored {score}. You earned ${currencyEarned}.
           </div>
         ) : (
           ""
