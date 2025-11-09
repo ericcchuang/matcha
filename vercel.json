@@ -28,4 +28,5 @@
       "dest": "/game/$1"
     }
   ]
+  { "handle": "filesystem" },
 }
