@@ -4,7 +4,7 @@ export default function useCards() {
 
   const { data, isPending, error } = useQuery({
     queryKey: ["cards"],
-    queryFn: () => fetch(`${endpoint}/cards`).then((r) => r.json()),
+    queryFn: () => fetch(`${endpoint}cards`).then((r) => r.json()),
   });
   return { data, isPending, error };
 }
