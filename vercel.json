@@ -7,8 +7,7 @@
     },
     {
       "src": "game/package.json",
-      "use": "@vercel/static-build",
-      "outputDirectory": "game/dist"
+      "use": "@vercel/static-build"
     }
   ],
   "rewrites": [
