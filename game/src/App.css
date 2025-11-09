@@ -1,0 +1,149 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 1.75em;
+}
+
+.App-header-logo {
+  display: flex;
+  flex-direction: row;
+  font-size: 3.5em;
+  gap: 0.25em;
+  align-content: center;
+  text-shadow: 0px 5px 5px white;
+}
+
+.App-header-logo-img img {
+  max-width: 1.25em;
+  padding-top: 0.125em;
+}
+
+.App-header-stat {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.625em 0.75em 0.5em 0.75em;
+  background-color: #ffd9ab90;
+  border: 2.5px solid #c68d79;
+  border-radius: 1em;
+  text-align: left;
+  gap: 0.5em;
+}
+
+.App-header-stat-img img {
+  max-height: 1.25em;
+}
+
+.App-header-options {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.App-header-options-img img {
+  max-width: 3.5em;
+}
+
+.App-header-options-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 0.5em;
+  text-align: left;
+  font-size: 1.75em;
+  border-radius: 0.5em;
+  gap: 0.75em;
+  
+}
+
+.App-header-options-button img {
+  max-width: 1em;
+}
+
+.App-header-options-button, .App-button {
+  padding: 0.625em 0.75em 0.5em 0.75em;
+  background-color: #ffd9ab90;
+  border: 2.5px solid #c68d79;
+  font-weight: bold;
+}
+
+.App-button {
+  display: block;
+  justify-self: center;
+  width: 25%;
+  height: 1em;
+  margin-top: 1em;
+  padding-bottom: 0.75em;
+  border-radius: 2em;
+  font-size: 2em;
+}
+
+.App-button-x {
+  display: block;
+  justify-self: right;
+  padding: 0.5em 1em 1em 1em;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.App-header-logo:hover,
+.App-header-options-button,
+.App-button:hover,
+.App-button-x:hover {
+  cursor: pointer;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App-img {
+  max-height: 50%;
+}
+
+.App-popup {
+  position: absolute;
+  z-index: 10;
+  height: 60%;
+  width: 80%;
+  background-color: #c68d79EE;
+  border: 5px solid #935d51;
+  border-radius: 4em;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

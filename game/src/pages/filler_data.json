@@ -1,0 +1,102 @@
+{
+  "problem1": {
+    "problem": "23 + 45",
+    "answer": 68
+  },
+  "problem2": {
+    "problem": "67 - 29",
+    "answer": 38
+  },
+  "problem3": {
+    "problem": "8 * 7",
+    "answer": 56
+  },
+  "problem4": {
+    "problem": "84 / 12",
+    "answer": 7
+  },
+  "problem5": {
+    "problem": "56 + 37",
+    "answer": 93
+  },
+  "problem6": {
+    "problem": "91 - 48",
+    "answer": 43
+  },
+  "problem7": {
+    "problem": "9 * 6",
+    "answer": 54
+  },
+  "problem8": {
+    "problem": "72 / 8",
+    "answer": 9
+  },
+  "problem9": {
+    "problem": "34 + 28",
+    "answer": 62
+  },
+  "problem10": {
+    "problem": "85 - 39",
+    "answer": 46
+  },
+  "problem11": {
+    "problem": "7 * 8",
+    "answer": 56
+  },
+  "problem12": {
+    "problem": "63 / 9",
+    "answer": 7
+  },
+  "problem13": {
+    "problem": "19 + 46",
+    "answer": 65
+  },
+  "problem14": {
+    "problem": "73 - 55",
+    "answer": 18
+  },
+  "problem15": {
+    "problem": "12 * 5",
+    "answer": 60
+  },
+  "problem16": {
+    "problem": "96 / 16",
+    "answer": 6
+  },
+  "problem17": {
+    "problem": "27 + 38",
+    "answer": 65
+  },
+  "problem18": {
+    "problem": "42 - 67",
+    "answer": -25
+  },
+  "problem19": {
+    "problem": "11 * 9",
+    "answer": 99
+  },
+  "problem20": {
+    "problem": "88 / 11",
+    "answer": 8
+  },
+  "problem21": {
+    "problem": "53 + 29",
+    "answer": 82
+  },
+  "problem22": {
+    "problem": "31 - 58",
+    "answer": -27
+  },
+  "problem23": {
+    "problem": "6 * 13",
+    "answer": 78
+  },
+  "problem24": {
+    "problem": "75 / 15",
+    "answer": 5
+  },
+  "problem25": {
+    "problem": "44 + 36",
+    "answer": 80
+  }
+}
