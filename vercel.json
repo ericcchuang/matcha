@@ -18,7 +18,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "game/dist/$1"
+      "destination": "game/build/$1"
     }
   ]
 }
