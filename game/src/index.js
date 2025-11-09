@@ -4,16 +4,21 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MathJaxContext } from "better-react-mathjax";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const queryClient = new QueryClient();
+
 root.render(
   <React.StrictMode>
-    <MathJaxContext>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </MathJaxContext>
+    <QueryClientProvider client={queryClient}>
+      <MathJaxContext>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </MathJaxContext>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
