@@ -9,7 +9,6 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import filler from "./filler_data.json";
 import useCards from "../hooks/useCards";
 import ItemCard from "../hooks/itemCard";
-import { MathJax } from "better-react-mathjax";
 
 function Game() {
   const endpoint = process.env.REACT_APP_ENDPOINT;
@@ -188,7 +187,7 @@ function Game() {
         {loading ? <div>loading problems...</div> : ""}
         {currentProblem && time > 0 && !loading ? (
           <div>
-            <MathJax>{`\\[ ${currentProblem.problem} = \\]`}</MathJax>
+            <p>{currentProblem.problem} = </p>
             <label>
               <input name="answer" id="answer" onKeyDown={handleKeyDown} />
             </label>
