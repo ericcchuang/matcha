@@ -1,5 +1,6 @@
 import asyncio
 import json
+from mangum import Mangum
 
 from dotenv import load_dotenv
 from dedalus_labs import AsyncDedalus, DedalusRunner
@@ -46,3 +47,5 @@ async def getProblems(input):
 async def cards():
     with open('./cards.json', 'r') as f:
         return json.load(f)
+    
+handler = Mangum(app)
