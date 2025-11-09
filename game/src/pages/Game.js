@@ -184,7 +184,7 @@ function Game() {
         ) : (
           ""
         )}
-        {loading ? <div>loading problems...</div> : ""}
+        {loading ? <div>Loading problems...</div> : ""}
         {currentProblem && time > 0 && !loading ? (
           <div style={{width: "100%", height: "100%", alignContent: "center", justifyContent: "center"}}>
             <h3 style={{marginTop: "4vh"}}>Score: {score} | Time: {time}</h3>
