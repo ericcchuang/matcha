@@ -20,22 +20,22 @@ function App() {
       <div className="App">
         <div className="App-header">
           <a href="/" className="App-header-logo">
-            MATCHA
+            MATHCHA
             <div className="App-header-logo-img">
               <img src={"/assets/icons/matcha-logo.png"} />
             </div>
           </a>
           <div className="App-header-stat">
+            $ {currency}
             <div className="App-header-stat-img">
               <img src={"/assets/icons/matcha-currency.png"} />
             </div>
-            {currency} (Currency)
           </div>
           <div className="App-header-stat">
+            Highest Score: 000
             <div className="App-header-stat-img">
               <img src={"/assets/icons/matcha-logo.png"} />
             </div>
-            000 (Level)
           </div>
           <div className="App-header-options">
             <button
@@ -45,22 +45,17 @@ function App() {
               CARDS
               <img src={"/assets/icons/cards.png"} />
             </button>
-            <button
-              onClick={() => toggle("settings")}
-              className="App-header-options-img"
-            >
+            {/* Settings button
+            <button onClick={() => toggle("settings")} className="App-header-options-img">
               <img src={"/assets/icons/settings.png"} />
-            </button>
+            </button> */}
             <div className="App-popup" id="cards" style={{ display: "none" }}>
               <h1>Hello World!</h1>
             </div>
-            <div
-              className="App-popup"
-              id="settings"
-              style={{ display: "none" }}
-            >
+            {/* Settings popup
+            <div className="App-popup" id="settings">
               <h1>Settings</h1>
-            </div>
+            </div> */}
           </div>
         </div>
         <Routes>

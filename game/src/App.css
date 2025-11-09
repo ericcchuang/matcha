@@ -42,6 +42,7 @@
 .App-header-stat {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0.625em 0.75em 0.5em 0.75em;
@@ -89,6 +90,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App-img {
+  max-height: 50%;
 }
 
 .App-popup {

@@ -6,16 +6,18 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="Container">
-      <Link to="/Game" className="Card">
-        <button>
+      <button className="Card">
+        <Link to="/Game">
+          <img src={"/assets/icons/math.png"} className="App-img" />
           <h1>PLAY</h1>
-        </button>
+        </Link>
+      </button>
+    <button className="Card">
+      <Link to="/Gacha">
+        <img src={"/assets/icons/gacha.png"} className="App-img" />
+        <h1>GACHA</h1>
       </Link>
-      <Link to="/Gacha" className="Card">
-        <button>
-          <h1>Gacha</h1>
-        </button>
-      </Link>
+    </button>
     </div>
   );
 }
