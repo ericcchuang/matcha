@@ -26,6 +26,10 @@ button:hover {
   transform: scale(.975); /* 2.5% zoom in */
 }
 
+a {
+  all: unset;
+}
+
 h1 {
   font-size: 5em;
 }

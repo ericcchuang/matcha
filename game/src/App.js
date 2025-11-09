@@ -19,12 +19,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <div className="App-header">
-          <div className="App-header-logo">
+          <a href="/" className="App-header-logo">
             MATCHA
             <div className="App-header-logo-img">
               <img src={"/assets/icons/matcha-logo.png"} />
             </div>
-          </div>
+          </a>
           <div className="App-header-stat">
             <div className="App-header-stat-img">
               <img src={"/assets/icons/matcha-currency.png"} />
