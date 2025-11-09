@@ -18,12 +18,12 @@ code {
 }
 
 button {
-  all: unset;             /* wipes ALL default browser styles */
-  transition: transform .2s; /* Animation */
+  all: unset; /* wipes ALL default browser styles */
+  transition: transform 0.2s; /* Animation */
 }
 
 button:hover {
-  transform: scale(.975); /* 2.5% zoom in */
+  transform: scale(0.975); /* 2.5% zoom in */
 }
 
 .Container {
@@ -47,4 +47,21 @@ button:hover {
 .playingCard {
   max-width: 50%;
   max-height: 25vw;
+}
+
+.gameplayCard {
+  max-height: 6vw;
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+}
+
+.gameplayCard:hover {
+  transform: scale(2);
+  margin-right: 5px;
+}
+
+.gameplayCard2 {
+  max-height: 6vw;
+  margin-right: 5px;
+  transition: transform 0.3s ease;
 }
