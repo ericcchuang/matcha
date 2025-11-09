@@ -21,7 +21,11 @@ function Game() {
     timerType: "DECREMENTAL",
   });
   const [currency, setCurrency] = useLocalStorage("currency");
-  const [cards, setCards] = useLocalStorage("cards");
+  const initialCards = {
+    0: 0,
+  };
+  const [cardsFromStorage, setCards] = useLocalStorage("cards");
+  const cards = cardsFromStorage === null ? initialCards : cardsFromStorage;
 
   function initGame() {
     start();
@@ -146,7 +150,7 @@ function Game() {
                     id={key}
                     src={cardmap[key]}
                     alt={`Selected Card ${key}`}
-                    className="gameplayCard2"
+                    className="gameplayCard"
                   />
                 );
               }
