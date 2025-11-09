@@ -26,22 +26,19 @@ function App() {
             </div>
           </a>
           <div className="App-header-stat">
-            $ {currency}
+            <p>$ {currency}</p>
             <div className="App-header-stat-img">
               <img src={"/assets/icons/matcha-currency.png"} />
             </div>
           </div>
           <div className="App-header-stat">
-            Highest Score: 000
+            <p>Highest Score: 000</p>
             <div className="App-header-stat-img">
               <img src={"/assets/icons/matcha-logo.png"} />
             </div>
           </div>
           <div className="App-header-options">
-            <button
-              onClick={() => toggle("cards")}
-              className="App-header-options-button"
-            >
+            <button onClick={() => toggle("cards")} className="App-header-options-button">
               CARDS
               <img src={"/assets/icons/cards.png"} />
             </button>
@@ -49,9 +46,27 @@ function App() {
             <button onClick={() => toggle("settings")} className="App-header-options-img">
               <img src={"/assets/icons/settings.png"} />
             </button> */}
-            <div className="App-popup" id="cards" style={{ display: "none" }}>
-              <h1>Hello World!</h1>
+            <div className="App-popup" id="cards" style={{ display: "none" }}>  
+              <button onClick={() => toggle("cards")} className="App-button-x" id="x">x</button>
+              <h1>My Cards</h1>
+              <div>
+                <br /><br /><br /><br /><h2>Cards Here Meow</h2><br /><br /><br /><br /><br />
+              </div>
             </div>
+            {/* PLAY popup
+            <div className="App-popup" id="play-confirm" style={{ display: "none" }}>  
+              <button id="x">x</button>
+              <h1>Select Your Cards:</h1>
+              <div>
+                <br /><br /><br /><br /><h2>Cards Here Meow</h2><br /><br /><br /><br /><br />
+                </div>
+              <p>You may only select up to 5 cards.</p>
+              <Link to="/Game">
+                <button className="App-button">
+                  START!
+                </button>
+              </Link>
+            </div> */}
             {/* Settings popup
             <div className="App-popup" id="settings">
               <h1>Settings</h1>
