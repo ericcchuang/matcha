@@ -79,17 +79,33 @@ function Game() {
 
     if (equipped.includes(lastDigit.toString())) {
       scoreAdd = scoreAdd + 1;
-      console.log("67");
     }
 
     if (equipped.includes("10") && question.includes("+")) {
       scoreAdd = scoreAdd + 1;
-      console.log("+");
     }
 
     if (equipped.includes("11") && question.includes("-")) {
       scoreAdd = scoreAdd + 1;
-      console.log("-");
+    }
+
+    if (equipped.includes("12")) {
+      if (answer == "21") {
+        scoreAdd = scoreAdd + 21;
+      } else if (answer == "19") {
+        scoreAdd = scoreAdd + 19;
+      } else if (lastDigit == 9 || lastDigit == 0) {
+        scoreAdd = scoreAdd + 1;
+      }
+      scoreAdd = scoreAdd + 1;
+    }
+
+    if (equipped.includes("13")) {
+      if (lastDigit == 6) {
+        scoreAdd = scoreAdd + 6;
+      } else if (lastDigit == 7) {
+        scoreAdd = scoreAdd + 7;
+      }
     }
     return scoreAdd;
   }
