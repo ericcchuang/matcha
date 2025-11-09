@@ -46,10 +46,12 @@ function App() {
               CARDS
               <img src={"/assets/icons/cards.png"} />
             </button>
-            {/* Settings button
-            <button onClick={() => toggle("settings")} className="App-header-options-img">
+            <button
+              onClick={() => toggle("settings")}
+              className="App-header-options-img"
+            >
               <img src={"/assets/icons/settings.png"} />
-            </button> */}
+            </button>
             <div className="App-popup" id="cards" style={{ display: "none" }}>
               <button
                 onClick={() => toggle("cards")}
@@ -86,10 +88,20 @@ function App() {
                 </button>
               </Link>
             </div> */}
-            {/* Settings popup
-            <div className="App-popup" id="settings">
+            <div
+              className="App-popup"
+              id="settings"
+              style={{ display: "none" }}
+            >
+              <button
+                onClick={() => toggle("settings")}
+                className="App-button-x"
+                id="x"
+              >
+                x
+              </button>
               <h1>Settings</h1>
-            </div> */}
+            </div>
           </div>
         </div>
         <Routes>
