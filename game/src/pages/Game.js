@@ -57,7 +57,9 @@ function Game() {
     document.getElementById("answer").value = "";
     if (answer == currentProblem.answer) {
       setPrevCorrectWrong("Correct!");
-      setScore(score + 1);
+      setScore(
+        calculateScore(currentProblem.problem, answer, selectedIds) + score
+      );
       setCurrency(Number(currency) + 1);
       advanceTime(-extraTime);
       if (extraTime > 2) {
@@ -69,6 +71,27 @@ function Game() {
     setCurrentIndex((prevIndex) => {
       return (prevIndex + 1) % problemList.length;
     });
+  }
+
+  function calculateScore(question, answer, equipped) {
+    let scoreAdd = 1;
+    const lastDigit = answer % 10;
+
+    if (equipped.includes(lastDigit.toString())) {
+      scoreAdd = scoreAdd + 1;
+      console.log("67");
+    }
+
+    if (equipped.includes("10") && question.includes("+")) {
+      scoreAdd = scoreAdd + 1;
+      console.log("+");
+    }
+
+    if (equipped.includes("11") && question.includes("-")) {
+      scoreAdd = scoreAdd + 1;
+      console.log("-");
+    }
+    return scoreAdd;
   }
 
   const handleCardClick = (id) => {
@@ -84,6 +107,12 @@ function Game() {
       }
       return [...prevIds, id];
     });
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleNext();
+    }
   };
 
   return (
@@ -108,7 +137,9 @@ function Game() {
               );
             })}
             <br />
-            <p>You may only select up to 5 cards. Click "Start Game" to start!</p>
+            <p>
+              You may only select up to 5 cards. Click "Start Game" to start!
+            </p>
             <button onClick={getMathProblems} className="App-button">
               START!
             </button>
@@ -120,15 +151,21 @@ function Game() {
           <div>
             {currentProblem.problem} =
             <label>
-              <input name="answer" id="answer" />
+              <input name="answer" id="answer" onKeyDown={handleKeyDown} />
             </label>
+            <br />
             <button onClick={handleNext} disabled={problemList.length === 0}>
               Submit
             </button>
+            <br />
             <p>{prevCorrectWrong}</p>
+            <br />
             <p>Score: {score}</p>
+            <br />
             <p>Time: {time}</p>
+            <br />
             <p>Selected Cards:</p>
+            <br />
             {Object.entries(cardData).map(([key]) => {
               if (selectedIds.includes(key)) {
                 return (
