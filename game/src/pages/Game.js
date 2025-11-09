@@ -8,6 +8,7 @@ import { useTimer } from "use-timer";
 import useLocalStorage from "../hooks/useLocalStorage";
 import filler from "./filler_data.json";
 import useCards from "../hooks/useCards";
+import ItemCard from "../hooks/itemCard";
 
 function Game() {
   const [problemList, setProblemList] = useState([]);
@@ -68,26 +69,6 @@ function Game() {
     setCurrentIndex((prevIndex) => {
       return (prevIndex + 1) % problemList.length;
     });
-  }
-
-  function ItemCard({ card, isSelected, onCardClick, className }) {
-    // const imageUrl = cards[id] >= 1 ? cardmap[id] : cardmap[12];
-    const playerOwnsCard = ownedCards && card["id"] in ownedCards;
-    const imageUrl = playerOwnsCard
-      ? `/assets/cards/${card["rarity"]}/${card["name"]}.png`
-      : "/assets/icons/math.png";
-    const cardStyle = {
-      border: isSelected ? "5px solid green" : "5px solid #ccc",
-    };
-    return (
-      <img
-        src={imageUrl}
-        className={className}
-        style={cardStyle}
-        alt={`Card ${card["id"]}`}
-        onClick={onCardClick}
-      />
-    );
   }
 
   const handleCardClick = (id) => {
