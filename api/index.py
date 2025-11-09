@@ -3,8 +3,8 @@ import json
 from mangum import Mangum
 
 from dotenv import load_dotenv
-from dedalus_labs import AsyncDedalus, DedalusRunner
-from dedalus_labs.utils.streaming import stream_async
+#from dedalus_labs import AsyncDedalus, DedalusRunner
+#from dedalus_labs.utils.streaming import stream_async
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
